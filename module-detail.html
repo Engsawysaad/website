@@ -34,6 +34,54 @@
             cursor: pointer;
         }
 
+        /* Screenshot Modal */
+        .screenshot-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .screenshot-modal.active {
+            display: flex;
+        }
+
+        .screenshot-modal img {
+            max-width: 95%;
+            max-height: 95vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .screenshot-modal .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-modal .modal-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+        .screenshot-modal .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .module-detail-visual img {
             width: 100%;
             border-radius: 16px;
@@ -624,54 +672,6 @@
             display: none !important;
         }
     </style>
-/* Screenshot Modal */
-        .screenshot-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .screenshot-modal.active {
-            display: flex;
-        }
-
-        .screenshot-modal img {
-            max-width: 95%;
-            max-height: 95vh;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .screenshot-modal .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .screenshot-modal .modal-close svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-        }
-
-        .screenshot-modal .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
 </head>
 <body>
     <!-- Navigation -->
