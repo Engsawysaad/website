@@ -11,6 +11,41 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Module Detail Page Styles */
+        .module-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .module-detail-content {
+            order: 1;
+        }
+
+        .module-detail-visual {
+            order: 2;
+            position: relative;
+        }
+
+        .module-detail-visual img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .module-detail-layout {
+                grid-template-columns: 1fr;
+            }
+            .module-detail-content {
+                order: 1;
+            }
+            .module-detail-visual {
+                order: 2;
+            }
+        }
+
         .module-detail-header {
             padding: 8rem 2rem 4rem;
             background: var(--surface);
@@ -562,45 +597,52 @@
     <!-- Module Detail Header -->
     <header class="module-detail-header">
         <div class="module-detail-container">
-            <a href="index.html#modules" class="back-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                Back to Modules
-            </a>
-            <div class="module-detail-title">
-                <div class="module-detail-icon" id="moduleIcon">
-                    <!-- Dynamic icon -->
+            <div class="module-detail-layout">
+                <div class="module-detail-content">
+                    <a href="index.html#modules" class="back-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        Back to Modules
+                    </a>
+                    <div class="module-detail-title">
+                        <div class="module-detail-icon" id="moduleIcon">
+                            <!-- Dynamic icon -->
+                        </div>
+                        <h1 id="moduleTitle">Module Name</h1>
+                    </div>
+                    <p class="module-detail-description" id="moduleDescription">
+                        Module description goes here.
+                    </p>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Production Ready</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Regular Updates</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>10,000+ Users</span>
+                        </div>
+                    </div>
                 </div>
-                <h1 id="moduleTitle">Module Name</h1>
-            </div>
-            <p class="module-detail-description" id="moduleDescription">
-                Module description goes here.
-            </p>
-            <div class="module-meta">
-                <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    <span>Production Ready</span>
-                </div>
-                <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span>Regular Updates</span>
-                </div>
-                <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                    <span>10,000+ Users</span>
+                <div class="module-detail-visual">
+                    <img id="mainScreenshot" src="" alt="Module Preview" loading="lazy">
                 </div>
             </div>
         </div>
@@ -752,11 +794,12 @@
                     <line x1="12" y1="1" x2="12" y2="23"></line>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/image1f5eff.png",
                 screenshots: [
-                    { label: "Profit & Loss Statement", src: "https://frappe.erpnext.com/files/P&L%20V16%201ab954d.webp" },
-                    { label: "Balance Sheet", src: "https://frappe.erpnext.com/files/Balance%20sheet%20V16%201.png" },
-                    { label: "Multi-Company View", src: "https://frappe.erpnext.com/files/multi-company-v16%201a556bd.webp" },
-                    { label: "Cost Center Analysis", src: "https://frappe.erpnext.com/files/Cost%20center%20160750e.webp" }
+                    { label: "General Ledger", src: "https://frappe.io/files/accounting1.png" },
+                    { label: "Accounts Dashboard", src: "https://frappe.io/files/image1f5eff.png" },
+                    { label: "Financial Reports", src: "https://frappe.io/files/imagefbc116.png" },
+                    { label: "Trial Balance", src: "https://frappe.io/files/accounting1.png" }
                 ],
                 features: [
                     { title: "General Ledger", description: "Complete view of all financial transactions with detailed accounting entries." },
@@ -784,11 +827,12 @@
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/crm2f5d2a.png",
                 screenshots: [
-                    { label: "CRM Dashboard", src: "https://frappe.erpnext.com/files/image1ade62.png" },
-                    { label: "Lead Management", src: "https://frappe.erpnext.com/files/crm77c685.png" },
-                    { label: "Opportunity Pipeline", src: "https://frappe.erpnext.com/files/crm77c685.png" },
-                    { label: "Customer Analytics", src: "https://frappe.erpnext.com/files/image6ab3c8.png" }
+                    { label: "CRM Dashboard", src: "https://frappe.io/files/image1ade62.png" },
+                    { label: "Lead Pipeline", src: "https://frappe.io/files/image6ab3c8.png" },
+                    { label: "Customer Management", src: "https://frappe.io/files/crm2f5d2a.png" },
+                    { label: "Opportunity Tracking", src: "https://frappe.io/files/image1ade62.png" }
                 ],
                 features: [
                     { title: "Lead Management", description: "Capture, track, and nurture potential leads through various sales funnel stages." },
@@ -813,11 +857,12 @@
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/stock.png",
                 screenshots: [
-                    { label: "Stock Dashboard", src: "https://frappe.erpnext.com/files/stock.png" },
-                    { label: "Item Master", src: "https://frappe.erpnext.com/files/item-coffee.webp" },
-                    { label: "Warehouse Management", src: "https://frappe.erpnext.com/files/imageccc9ed.png" },
-                    { label: "Inventory Reports", src: "https://frappe.erpnext.com/files/imageccc9ed.png" }
+                    { label: "Stock Dashboard", src: "https://frappe.io/files/stock.png" },
+                    { label: "Item Management", src: "https://frappe.io/files/item-coffee.webp" },
+                    { label: "Warehouse View", src: "https://frappe.io/files/imageccc9ed.png" },
+                    { label: "Stock Reports", src: "https://frappe.io/files/imageccc9ed.png" }
                 ],
                 features: [
                     { title: "Multi-Warehouse", description: "Manage stock across multiple warehouses and locations." },
@@ -843,11 +888,12 @@
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/imageb1065c.png",
                 screenshots: [
-                    { label: "HR Dashboard", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
-                    { label: "Employee Management", src: "https://frappe.erpnext.com/files/imageba8eb9.png" },
-                    { label: "Payroll Processing", src: "https://frappe.erpnext.com/files/imageee2334.png" },
-                    { label: "Leave Management", src: "https://frappe.erpnext.com/files/image91e7eb.png" }
+                    { label: "HR Dashboard", src: "https://frappe.io/files/imageb1065c.png" },
+                    { label: "Employee Records", src: "https://frappe.io/files/imageba8eb9.png" },
+                    { label: "Payroll Processing", src: "https://frappe.io/files/imageee2334.png" },
+                    { label: "Leave Management", src: "https://frappe.io/files/image91e7eb.png" }
                 ],
                 features: [
                     { title: "Employee Records", description: "Maintain comprehensive employee profiles with all necessary data." },
@@ -873,11 +919,12 @@
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/projectscb689c.png",
                 screenshots: [
-                    { label: "Project Dashboard", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
-                    { label: "Task Management", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
-                    { label: "Timesheets", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
-                    { label: "Gantt Chart", src: "https://frappe.erpnext.com/files/projectscb689c.png" }
+                    { label: "Project Dashboard", src: "https://frappe.io/files/projectscb689c.png" },
+                    { label: "Task Management", src: "https://frappe.io/files/imageb1065c.png" },
+                    { label: "Timesheets", src: "https://frappe.io/files/projectscb689c.png" },
+                    { label: "Gantt Chart", src: "https://frappe.io/files/projectscb689c.png" }
                 ],
                 features: [
                     { title: "Task Management", description: "Create, assign, and track tasks with clear deadlines." },
@@ -902,11 +949,12 @@
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/manufacturing.png",
                 screenshots: [
-                    { label: "Manufacturing Dashboard", src: "https://frappe.erpnext.com/files/manufacturing.png" },
-                    { label: "Work Orders", src: "https://frappe.erpnext.com/files/job-card.webp" },
-                    { label: "BOM Management", src: "https://frappe.erpnext.com/files/manufacturing.png" },
-                    { label: "Production Planning", src: "https://frappe.erpnext.com/files/manufacturing.png" }
+                    { label: "Manufacturing Dashboard", src: "https://frappe.io/files/manufacturing.png" },
+                    { label: "Work Orders", src: "https://frappe.io/files/job-card.webp" },
+                    { label: "BOM Management", src: "https://frappe.io/files/manufacturing.png" },
+                    { label: "Production Planning", src: "https://frappe.io/files/imageb1065c.png" }
                 ],
                 features: [
                     { title: "Bill of Materials (BOM)", description: "Define multi-level BOMs with raw materials and operations." },
@@ -933,11 +981,12 @@
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/pos.png",
                 screenshots: [
-                    { label: "E-Commerce Dashboard", src: "https://frappe.erpnext.com/files/pos.png" },
-                    { label: "Online Store", src: "https://frappe.erpnext.com/files/pos.png" },
-                    { label: "Order Management", src: "https://frappe.erpnext.com/files/pos.png" },
-                    { label: "POS Interface", src: "https://frappe.erpnext.com/files/pos.png" }
+                    { label: "POS Dashboard", src: "https://frappe.io/files/pos.png" },
+                    { label: "Online Store", src: "https://frappe.io/files/image3f4af0.png" },
+                    { label: "Order Management", src: "https://frappe.io/files/pos.png" },
+                    { label: "Checkout Interface", src: "https://frappe.io/files/image3f4af0.png" }
                 ],
                 features: [
                     { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
@@ -963,11 +1012,12 @@
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>`,
+                mainScreenshot: "https://frappe.io/files/imageb17cd2dcf015.webp",
                 screenshots: [
-                    { label: "Website Builder", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
-                    { label: "Page Editor", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
-                    { label: "Theme Settings", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
-                    { label: "Blog Management", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" }
+                    { label: "Website Builder", src: "https://frappe.io/files/imageb17cd2dcf015.webp" },
+                    { label: "Page Editor", src: "https://frappe.io/files/imageb17cd2dcf015.webp" },
+                    { label: "Blog Management", src: "https://frappe.io/files/imageb17cd2dcf015.webp" },
+                    { label: "Theme Settings", src: "https://frappe.io/files/imageb17cd2dcf015.webp" }
                 ],
                 features: [
                     { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
@@ -1015,6 +1065,13 @@
             document.getElementById('moduleIcon').innerHTML = module.icon;
             document.getElementById('moduleTitle').textContent = module.title;
             document.getElementById('moduleDescription').textContent = module.description;
+
+            // Update main screenshot
+            const mainScreenshot = document.getElementById('mainScreenshot');
+            if (module.mainScreenshot) {
+                mainScreenshot.src = module.mainScreenshot;
+                mainScreenshot.style.display = 'block';
+            }
 
             // Generate features
             const featuresList = document.getElementById('featuresList');
