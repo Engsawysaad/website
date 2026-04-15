@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ERPNext - Module Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Module Detail Page Styles */
+        * {
+            touch-action: manipulation;
+        }
+
+        html {
+            touch-action: manipulation;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
         .module-detail-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
