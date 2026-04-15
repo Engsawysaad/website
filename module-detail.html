@@ -33,10 +33,22 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             border: 1px solid var(--border);
             position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .module-detail-visual:hover img {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .module-detail-visual {
+            overflow: hidden;
+            border-radius: 16px;
         }
 
         .module-detail-visual {
             position: relative;
+            cursor: pointer;
         }
 
         .module-detail-visual .screenshot-logo-watermark {
@@ -51,6 +63,7 @@
             justify-content: center;
             box-shadow: 0 4px 12px rgba(8, 145, 178, 0.35);
             z-index: 10;
+            pointer-events: none;
         }
 
         .module-detail-visual .screenshot-logo-watermark svg {
