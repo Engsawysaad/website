@@ -22,9 +22,8 @@
             order: 1;
         }
 
-        .module-detail-visual {
-            order: 2;
-            position: relative;
+.module-detail-visual {
+            cursor: pointer;
         }
 
         .module-detail-visual img {
@@ -514,12 +513,6 @@
 
         .screenshot-item .screenshot-logo-watermark {
             position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .screenshot-item .screenshot-logo-watermark {
-            position: absolute;
             top: 1rem;
             right: 1rem;
         }
@@ -543,38 +536,6 @@
 
         .screenshot-item:hover img {
             transform: scale(1.02);
-        }
-
-        /* Logo watermark on screenshots */
-        .screenshot-logo-watermark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 28px;
-            height: 28px;
-            background: #0891b2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(8, 145, 178, 0.35);
-            z-index: 10;
-        }
-
-        .screenshot-logo-watermark svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .screenshot-logo-watermark svg rect {
-            fill: #0891b2;
-        }
-
-        .screenshot-logo-watermark svg path:first-child {
-            fill: #ffffff;
-        }
-
-        .screenshot-logo-watermark svg path:last-child {
-            fill: #0891b2;
         }
 
         .screenshot-label {
@@ -735,13 +696,6 @@
                     </div>
                 </div>
                 <div class="module-detail-visual">
-                    <div class="screenshot-logo-watermark">
-                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="40" height="40" rx="10" fill="#0891b2"/>
-                            <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#ffffff"/>
-                            <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="#0891b2"/>
-                        </svg>
-                    </div>
                     <img id="mainScreenshot" src="" alt="Module Preview" loading="lazy" style="display: none;">
                 </div>
             </div>
@@ -1168,23 +1122,9 @@
 
             // Update main screenshot
             const mainScreenshot = document.getElementById('mainScreenshot');
-            const mainVisual = document.querySelector('.module-detail-visual');
             if (module.mainScreenshot) {
                 mainScreenshot.src = module.mainScreenshot;
                 mainScreenshot.style.display = 'block';
-                // Add logo watermark
-                if (!mainVisual.querySelector('.screenshot-logo-watermark')) {
-                    mainVisual.innerHTML = `
-                        <div class="screenshot-logo-watermark">
-                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="40" height="40" rx="10" fill="#0891b2"/>
-                                <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#ffffff"/>
-                                <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="#0891b2"/>
-                            </svg>
-                        </div>
-                        <img id="mainScreenshot" src="${module.mainScreenshot}" alt="Module Preview" loading="lazy">
-                    `;
-                }
             }
 
             // Generate features
@@ -1237,13 +1177,6 @@
             if (module.screenshots) {
                 screenshotGallery.innerHTML = module.screenshots.map((shot, index) => `
                     <div class="screenshot-item ${index % 3 === 0 ? 'full-width' : ''}">
-                        <div class="screenshot-logo-watermark">
-                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="40" height="40" rx="10" fill="#0891b2"/>
-                                <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#ffffff"/>
-                                <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="#0891b2"/>
-                            </svg>
-                        </div>
                         <img src="${shot.src}" alt="${shot.label}" loading="lazy" onerror="this.style.display='none'">
                         <div class="screenshot-label">${shot.label}</div>
                     </div>
