@@ -476,6 +476,8 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    display: block;
 } 
 
 .module-card::before {

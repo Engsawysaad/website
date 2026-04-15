@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERPNext - Module Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='10' fill='%230891b2'/%3E%3Cpath d='M10 20L20 10L30 20L20 30L10 20Z' fill='white'/%3E%3Cpath d='M20 16L24 20L20 24L16 20L20 16Z' fill='%230891b2'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Module Detail Page Styles */
+        .module-detail-header {
+            padding: 8rem 2rem 4rem;
+            background: var(--surface);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-detail-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.2) 0%, transparent 50%, rgba(90, 140, 105, 0.2) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .module-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .back-link svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .module-detail-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-detail-icon {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, rgba(8, 145, 178, 0.1) 100%);
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .module-detail-icon svg {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .module-detail-title h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .module-detail-description {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .meta-item svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--accent);
+        }
+
+        /* Features List Section */
+        .module-features {
+            padding: 4rem 2rem;
+            background: var(--surface-alt);
+            position: relative;
+        }
+
+        .module-features::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.15) 0%, transparent 50%, rgba(90, 140, 105, 0.15) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-item-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .feature-item-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .feature-item-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Benefits Section */
+        .module-benefits {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            position: relative;
+        }
+
+        .module-benefits::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.15) 0%, transparent 50%, rgba(90, 140, 105, 0.15) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, var(--accent-glow) 0%, rgba(8, 145, 178, 0.05) 100%);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 15px 40px rgba(8, 145, 178, 0.15);
+        }
+
+        .benefit-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .benefit-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .module-cta {
+            padding: 4rem 2rem;
+            background: var(--surface-alt);
+            position: relative;
+            text-align: center;
+        }
+
+        .module-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.2) 0%, transparent 50%, rgba(90, 140, 105, 0.2) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .module-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .module-cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .module-cta p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Related Modules */
+        .related-modules {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            position: relative;
+        }
+
+        .related-modules::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.15) 0%, transparent 50%, rgba(90, 140, 105, 0.15) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .related-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .related-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-card-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, rgba(8, 145, 178, 0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .related-card-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .related-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 1024px) {
+            .module-detail-header {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .module-detail-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .module-detail-title h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .module-features,
+            .module-benefits,
+            .module-cta,
+            .related-modules {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .module-detail-title h1 {
+                font-size: 2rem;
+            }
+
+            .module-detail-icon {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            .module-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Hide sections not for current module */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="#0891b2"/>
+                <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="white"/>
+                <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="#0891b2"/>
+            </svg>
+            <span>ERPNext</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#modules">Modules</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Module Detail Header -->
+    <header class="module-detail-header">
+        <div class="module-detail-container">
+            <a href="index.html#modules" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Modules
+            </a>
+            <div class="module-detail-title">
+                <div class="module-detail-icon" id="moduleIcon">
+                    <!-- Dynamic icon -->
+                </div>
+                <h1 id="moduleTitle">Module Name</h1>
+            </div>
+            <p class="module-detail-description" id="moduleDescription">
+                Module description goes here.
+            </p>
+            <div class="module-meta">
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Production Ready</span>
+                </div>
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Regular Updates</span>
+                </div>
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>10,000+ Users</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="module-features" id="features">
+        <div class="features-container">
+            <h2 class="features-section-title">Key Features</h2>
+            <div class="features-list" id="featuresList">
+                <!-- Dynamic features -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="module-benefits" id="benefits">
+        <div class="benefits-container">
+            <h2 class="features-section-title">Why Choose This Module</h2>
+            <div class="benefits-grid" id="benefitsGrid">
+                <!-- Dynamic benefits -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="module-cta">
+        <div class="module-cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Start your free trial today and experience the power of ERPNext.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary btn-large">
+                    Start Free Trial
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#" class="btn btn-secondary btn-large">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Modules -->
+    <section class="related-modules">
+        <div class="related-container">
+            <h2 class="features-section-title">Related Modules</h2>
+            <div class="related-grid" id="relatedGrid">
+                <!-- Dynamic related modules -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="10" fill="white"/>
+                        <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#0891b2"/>
+                        <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="white"/>
+                    </svg>
+                    <span>ERPNext</span>
+                </div>
+                <p>The world's most popular open-source ERP system. Trusted by businesses worldwide for comprehensive business management.</p>
+                <div class="footer-social">
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.363-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column footer-modules">
+                <h4>Modules</h4>
+                <ul class="footer-links">
+                    <li><a href="module-detail.html?module=accounting">Accounting</a></li>
+                    <li><a href="module-detail.html?module=crm">CRM</a></li>
+                    <li><a href="module-detail.html?module=inventory">Inventory</a></li>
+                    <li><a href="module-detail.html?module=hr">HR & Payroll</a></li>
+                    <li><a href="module-detail.html?module=projects">Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-resources">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">User Guide</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-company">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ERPNext. All rights reserved. Open Source under GNU GPL.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Module Data from ERPNext Official Documentation
+        const moduleData = {
+            accounting: {
+                title: "Accounting",
+                description: "Manage your financials with precision, from invoicing to reporting and everything in between. ERPNext accounting software is one of its strongest modules, supporting complete financial management without needing third-party tools.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>`,
+                features: [
+                    { title: "General Ledger", description: "Complete view of all financial transactions with detailed accounting entries." },
+                    { title: "Accounts Payable & Receivable", description: "Manage payments to suppliers and track money owed by customers." },
+                    { title: "Bank Reconciliation", description: "Match bank statements with internal records automatically." },
+                    { title: "Financial Statements", description: "Generate P&L, Balance Sheet, and Cash Flow reports instantly." },
+                    { title: "Tax Management", description: "Handle GST, VAT, and local tax regulations with automatic calculations." },
+                    { title: "Multi-Currency Support", description: "Conduct business globally with multiple currencies and exchange rates." },
+                    { title: "Budgeting", description: "Create and track budgets against actual spending." },
+                    { title: "Cost Centers", description: "Track expenses by department, project, or any segment." }
+                ],
+                benefits: [
+                    { title: "Real-Time Visibility", description: "See your financial health instantly with live dashboard updates." },
+                    { title: "Automated Workflows", description: "Automate recurring transactions and approval processes." },
+                    { title: "Tax Compliance", description: "Stay compliant with automatic tax calculations and filings." }
+                ],
+                related: ["crm", "inventory", "projects"]
+            },
+            crm: {
+                title: "CRM",
+                description: "Build stronger customer connections by tracking interactions, leads, and opportunities. The CRM module helps businesses improve customer relationships, optimize sales efforts, and drive growth.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>`,
+                features: [
+                    { title: "Lead Management", description: "Capture, track, and nurture potential leads through various sales funnel stages." },
+                    { title: "Opportunity Tracking", description: "Manage sales opportunities, track progress, and forecast revenue." },
+                    { title: "Customer Profiles", description: "Maintain detailed customer information with transaction history." },
+                    { title: "Quotations", description: "Generate professional quotes and send them directly to customers." },
+                    { title: "Email Integration", description: "Sync emails and track all customer communications within the system." },
+                    { title: "Sales Pipeline", description: "Visualize your sales process and identify bottlenecks." },
+                    { title: "Campaign Management", description: "Create and track marketing campaigns across channels." },
+                    { title: "Helpdesk", description: "Provide exceptional customer service with ticket management." }
+                ],
+                benefits: [
+                    { title: "Increased Conversion", description: "Improve conversion rates with structured follow-up workflows." },
+                    { title: "Unified View", description: "Get a 360-degree view of every customer interaction." },
+                    { title: "Sales Forecasting", description: "Predict revenue accurately with pipeline analytics." }
+                ],
+                related: ["accounting", "inventory", "website"]
+            },
+            inventory: {
+                title: "Inventory",
+                description: "Keep your inventory in check with real-time tracking and smart stock management tools. ERPNext provides full visibility across warehouses with advanced stock control features.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>`,
+                features: [
+                    { title: "Multi-Warehouse", description: "Manage stock across multiple warehouses and locations." },
+                    { title: "Batch & Serial Tracking", description: "Track items by batch numbers or serial numbers for traceability." },
+                    { title: "Stock Valuation", description: "Support for FIFO, Moving Average, and Standard valuation methods." },
+                    { title: "Automatic Stock Updates", description: "Real-time stock synchronization with purchases and sales." },
+                    { title: "Reorder Level", description: "Set minimum stock levels and get automated alerts." },
+                    { title: "Stock Reports", description: "Generate detailed reports on stock movement and analysis." },
+                    { title: "Item Master", description: "Manage product catalog with variants, barcodes, and specifications." },
+                    { title: "Supplier Management", description: "Track supplier performance and manage purchase orders." }
+                ],
+                benefits: [
+                    { title: "Reduced Stockouts", description: "Never run out of stock with intelligent reorder alerts." },
+                    { title: "Cost Optimization", description: "Minimize carrying costs with optimized inventory levels." },
+                    { title: "Complete Traceability", description: "Track every item from purchase to delivery." }
+                ],
+                related: ["accounting", "purchasing", "manufacturing"]
+            },
+            hr: {
+                title: "HR & Payroll",
+                description: "Streamline employee management, recruitment, attendance, leaves, and payroll processing. Automate HR workflows and ensure compliance with labor regulations.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>`,
+                features: [
+                    { title: "Employee Records", description: "Maintain comprehensive employee profiles with all necessary data." },
+                    { title: "Attendance Tracking", description: "Track employee attendance with flexible check-in methods." },
+                    { title: "Leave Management", description: "Handle leave requests, approvals, and leave policies." },
+                    { title: "Payroll Processing", description: "Process salaries with automatic calculations and deductions." },
+                    { title: "Expense Claims", description: "Manage employee expense submissions and reimbursements." },
+                    { title: "Performance Reviews", description: "Conduct performance appraisals and track KPIs." },
+                    { title: "Recruitment", description: "Manage job postings, applications, and hiring pipeline." },
+                    { title: "Tax Calculation", description: "Automatic tax deductions based on configurable tax slabs." }
+                ],
+                benefits: [
+                    { title: "Time Savings", description: "Reduce HR admin time by up to 70% with automation." },
+                    { title: "Error-Free Payroll", description: "Eliminate manual calculation errors in salary processing." },
+                    { title: "Employee Self-Service", description: "Empower employees with self-service portals." }
+                ],
+                related: ["accounting", "projects"]
+            },
+            projects: {
+                title: "Projects",
+                description: "Stay on track and meet deadlines with tools for planning, collaborating, and managing tasks. ERPNext project management includes Gantt charts, timesheets, and resource allocation.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>`,
+                features: [
+                    { title: "Task Management", description: "Create, assign, and track tasks with clear deadlines." },
+                    { title: "Gantt Charts", description: "Visualize project timelines and dependencies graphically." },
+                    { title: "Timesheets", description: "Track time spent on tasks and projects accurately." },
+                    { title: "Resource Allocation", description: "Assign team members and manage workload distribution." },
+                    { title: "Budget Tracking", description: "Monitor project costs against budget in real-time." },
+                    { title: "Milestones", description: "Set and track key project milestones and deliverables." },
+                    { title: "Project Templates", description: "Use pre-defined templates for recurring project types." },
+                    { title: "Team Collaboration", description: "Enable seamless collaboration with activity feeds." }
+                ],
+                benefits: [
+                    { title: "On-Time Delivery", description: "Keep projects on schedule with visual planning tools." },
+                    { title: "Profitability Tracking", description: "Monitor project profitability with cost vs. revenue analysis." },
+                    { title: "Team Productivity", description: "Improve team efficiency with clear task assignments." }
+                ],
+                related: ["hr", "accounting", "manufacturing"]
+            },
+            manufacturing: {
+                title: "Manufacturing",
+                description: "Optimize production workflows with tools for planning, scheduling, and managing work orders. ERPNext manufacturing module simplifies the production cycle with real-time monitoring.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>`,
+                features: [
+                    { title: "Bill of Materials (BOM)", description: "Define multi-level BOMs with raw materials and operations." },
+                    { title: "Work Orders", description: "Create and track production work orders through completion." },
+                    { title: "Production Planning", description: "Plan production schedules based on demand and capacity." },
+                    { title: "Job Cards", description: "Track individual job progress and assign to operators." },
+                    { title: "Quality Inspection", description: "Perform quality checks at various production stages." },
+                    { title: "Subcontracting", description: "Manage outsourced manufacturing operations." },
+                    { title: "Material Consumption", description: "Track raw material usage against production." },
+                    { title: "Capacity Planning", description: "Visualize production capacity and plan accordingly." }
+                ],
+                benefits: [
+                    { title: "Reduced Downtime", description: "Minimize production delays with better planning." },
+                    { title: "Cost Control", description: "Track material costs and reduce waste." },
+                    { title: "Quality Assurance", description: "Ensure consistent product quality with inspections." }
+                ],
+                related: ["inventory", "projects", "quality"]
+            },
+            ecommerce: {
+                title: "E-Commerce",
+                description: "Build your online store with integrated shopping cart, payments, and order management. ERPNext e-commerce syncs seamlessly with your inventory and accounting.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>`,
+                features: [
+                    { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
+                    { title: "Shopping Cart", description: "Full-featured cart with discount codes and promotions." },
+                    { title: "Payment Gateway", description: "Integrated payments with multiple gateway options." },
+                    { title: "Order Management", description: "Process orders from placement to delivery." },
+                    { title: "Inventory Sync", description: "Automatic inventory updates across all channels." },
+                    { title: "Customer Accounts", description: "Customers can track orders and view history." },
+                    { title: "SEO Optimization", description: "Built-in SEO tools for better search visibility." },
+                    { title: "Multi-Channel", description: "Sell on multiple channels from single inventory." }
+                ],
+                benefits: [
+                    { title: "Unified Operations", description: "Manage online and offline sales in one system." },
+                    { title: "Faster Checkout", description: "Streamlined checkout process reduces cart abandonment." },
+                    { title: "Real-Time Updates", description: "Instant sync between store and warehouse." }
+                ],
+                related: ["inventory", "accounting", "crm"]
+            },
+            website: {
+                title: "Website Builder",
+                description: "Create beautiful websites and web pages with drag-and-drop tools and SEO optimization. ERPNext includes a powerful website builder with responsive templates.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>`,
+                features: [
+                    { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
+                    { title: "Responsive Templates", description: "Mobile-friendly themes that look great on any device." },
+                    { title: "SEO Tools", description: "Built-in SEO optimization for better search rankings." },
+                    { title: "Blog Integration", description: "Create and manage blog content easily." },
+                    { title: "Web Forms", description: "Build custom forms for lead generation." },
+                    { title: "Theme Customization", description: "Customize colors, fonts, and layouts." },
+                    { title: "Multi-Language", description: "Create content in multiple languages." },
+                    { title: "Analytics", description: "Track visitor behavior and performance metrics." }
+                ],
+                benefits: [
+                    { title: "No Coding Required", description: "Build professional sites without technical skills." },
+                    { title: "Integrated with ERP", description: "Forms and data connect directly to ERPNext." },
+                    { title: "Fast Loading", description: "Optimized for speed and performance." }
+                ],
+                related: ["crm", "ecommerce"]
+            }
+        };
+
+        // Related module titles for display
+        const moduleTitles = {
+            accounting: "Accounting",
+            crm: "CRM",
+            inventory: "Inventory",
+            hr: "HR & Payroll",
+            projects: "Projects",
+            manufacturing: "Manufacturing",
+            ecommerce: "E-Commerce",
+            website: "Website Builder"
+        };
+
+        // Parse URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentModule = urlParams.get('module') || 'accounting';
+
+        // Get module data
+        const module = moduleData[currentModule];
+
+        if (module) {
+            // Update page title
+            document.title = `ERPNext - ${module.title}`;
+
+            // Update header
+            document.getElementById('moduleIcon').innerHTML = module.icon;
+            document.getElementById('moduleTitle').textContent = module.title;
+            document.getElementById('moduleDescription').textContent = module.description;
+
+            // Generate features
+            const featuresList = document.getElementById('featuresList');
+            featuresList.innerHTML = module.features.map(feature => `
+                <div class="feature-item">
+                    <div class="feature-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="feature-item-content">
+                        <h3>${feature.title}</h3>
+                        <p>${feature.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Generate benefits
+            const benefitsGrid = document.getElementById('benefitsGrid');
+            const benefitIcons = [
+                `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
+                `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+                `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`
+            ];
+            benefitsGrid.innerHTML = module.benefits.map((benefit, index) => `
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        ${benefitIcons[index]}
+                    </div>
+                    <h3>${benefit.title}</h3>
+                    <p>${benefit.description}</p>
+                </div>
+            `).join('');
+
+            // Generate related modules
+            const relatedGrid = document.getElementById('relatedGrid');
+            relatedGrid.innerHTML = module.related.map(rel => `
+                <a href="module-detail.html?module=${rel}" class="related-card">
+                    <div class="related-card-icon">
+                        ${moduleData[rel] ? moduleData[rel].icon : ''}
+                    </div>
+                    <h3>${moduleTitles[rel]}</h3>
+                    <p>Explore the ${moduleTitles[rel].toLowerCase()} module</p>
+                </a>
+            `).join('');
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.querySelector('.icon-hamburger').style.display = 
+                this.querySelector('.nav-links').classList.contains('active') ? 'none' : 'block';
+            this.querySelector('.icon-close').style.display = 
+                this.querySelector('.nav-links').classList.contains('active') ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
