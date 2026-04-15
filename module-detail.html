@@ -742,7 +742,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
+<script>
         // Module Data from ERPNext Official Documentation
         const moduleData = {
             accounting: {
@@ -778,17 +778,48 @@
             crm: {
                 title: "CRM",
                 description: "Build stronger customer connections by tracking interactions, leads, and opportunities. The CRM module helps businesses improve customer relationships, optimize sales efforts, and drive growth.",
-icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>`,
                 screenshots: [
-                    { label: "E-Commerce Dashboard", src: "https://frappe.erpnext.com/files/pos.png" },
-                    { label: "Online Store", src: "https://frappe.erpnext.com/files/image3f4af0.png" },
-                    { label: "Order Management", src: "https://frappe.erpnext.com/files/image146c23.png" },
-                    { label: "POS Interface", src: "https://frappe.erpnext.com/files/support398a47.png" }
+                    { label: "CRM Dashboard", src: "https://frappe.erpnext.com/files/image1ade62.png" },
+                    { label: "Lead Management", src: "https://frappe.erpnext.com/files/crm77c685.png" },
+                    { label: "Opportunity Pipeline", src: "https://frappe.erpnext.com/files/crm77c685.png" },
+                    { label: "Customer Analytics", src: "https://frappe.erpnext.com/files/image6ab3c8.png" }
                 ],
+                features: [
+                    { title: "Lead Management", description: "Capture, track, and nurture potential leads through various sales funnel stages." },
+                    { title: "Opportunity Tracking", description: "Manage sales opportunities, track progress, and forecast revenue." },
+                    { title: "Customer Profiles", description: "Maintain detailed customer information with transaction history." },
+                    { title: "Quotations", description: "Generate professional quotes and send them directly to customers." },
+                    { title: "Email Integration", description: "Sync emails and track all customer communications within the system." },
+                    { title: "Sales Pipeline", description: "Visualize your sales process and identify bottlenecks." },
+                    { title: "Campaign Management", description: "Create and track marketing campaigns across channels." },
+                    { title: "Helpdesk", description: "Provide exceptional customer service with ticket management." }
+                ],
+                benefits: [
+                    { title: "Increased Conversion", description: "Improve conversion rates with structured follow-up workflows." },
+                    { title: "Unified View", description: "Get a 360-degree view of every customer interaction." },
+                    { title: "Sales Forecasting", description: "Predict revenue accurately with pipeline analytics." }
+                ],
+                related: ["accounting", "inventory", "website"]
+            },
+            inventory: {
+                title: "Inventory",
+                description: "Keep your inventory in check with real-time tracking and smart stock management tools. ERPNext provides full visibility across warehouses with advanced stock control features.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>`,
+                screenshots: [
+                    { label: "Stock Dashboard", src: "https://frappe.erpnext.com/files/stock.png" },
+                    { label: "Item Master", src: "https://frappe.erpnext.com/files/item-coffee.webp" },
+                    { label: "Warehouse Management", src: "https://frappe.erpnext.com/files/imageccc9ed.png" },
+                    { label: "Inventory Reports", src: "https://frappe.erpnext.com/files/imageccc9ed.png" }
+                ],
+                features: [
                     { title: "Multi-Warehouse", description: "Manage stock across multiple warehouses and locations." },
                     { title: "Batch & Serial Tracking", description: "Track items by batch numbers or serial numbers for traceability." },
                     { title: "Stock Valuation", description: "Support for FIFO, Moving Average, and Standard valuation methods." },
@@ -818,6 +849,7 @@ icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
                     { label: "Payroll Processing", src: "https://frappe.erpnext.com/files/imageee2334.png" },
                     { label: "Leave Management", src: "https://frappe.erpnext.com/files/image91e7eb.png" }
                 ],
+                features: [
                     { title: "Employee Records", description: "Maintain comprehensive employee profiles with all necessary data." },
                     { title: "Attendance Tracking", description: "Track employee attendance with flexible check-in methods." },
                     { title: "Leave Management", description: "Handle leave requests, approvals, and leave policies." },
@@ -843,10 +875,11 @@ icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
                 </svg>`,
                 screenshots: [
                     { label: "Project Dashboard", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
-                    { label: "Task Management", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
-                    { label: "Timesheets", src: "https://frappe.erpnext.com/files/image3f4af0.png" },
-                    { label: "Gantt Chart", src: "https://frappe.erpnext.com/files/image146c23.png" }
+                    { label: "Task Management", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
+                    { label: "Timesheets", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
+                    { label: "Gantt Chart", src: "https://frappe.erpnext.com/files/projectscb689c.png" }
                 ],
+                features: [
                     { title: "Task Management", description: "Create, assign, and track tasks with clear deadlines." },
                     { title: "Gantt Charts", description: "Visualize project timelines and dependencies graphically." },
                     { title: "Timesheets", description: "Track time spent on tasks and projects accurately." },
@@ -866,15 +899,47 @@ icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
             manufacturing: {
                 title: "Manufacturing",
                 description: "Optimize production workflows with tools for planning, scheduling, and managing work orders. ERPNext manufacturing module simplifies the production cycle with real-time monitoring.",
-icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>`,
                 screenshots: [
                     { label: "Manufacturing Dashboard", src: "https://frappe.erpnext.com/files/manufacturing.png" },
                     { label: "Work Orders", src: "https://frappe.erpnext.com/files/job-card.webp" },
-                    { label: "BOM Management", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
-                    { label: "Production Planning", src: "https://frappe.erpnext.com/files/imageba8eb9.png" }
+                    { label: "BOM Management", src: "https://frappe.erpnext.com/files/manufacturing.png" },
+                    { label: "Production Planning", src: "https://frappe.erpnext.com/files/manufacturing.png" }
                 ],
+                features: [
+                    { title: "Bill of Materials (BOM)", description: "Define multi-level BOMs with raw materials and operations." },
+                    { title: "Work Orders", description: "Create and track production work orders through completion." },
+                    { title: "Production Planning", description: "Plan production schedules based on demand and capacity." },
+                    { title: "Job Cards", description: "Track individual job progress and assign to operators." },
+                    { title: "Quality Inspection", description: "Perform quality checks at various production stages." },
+                    { title: "Subcontracting", description: "Manage outsourced manufacturing operations." },
+                    { title: "Material Consumption", description: "Track raw material usage against production." },
+                    { title: "Capacity Planning", description: "Visualize production capacity and plan accordingly." }
+                ],
+                benefits: [
+                    { title: "Reduced Downtime", description: "Minimize production delays with better planning." },
+                    { title: "Cost Control", description: "Track material costs and reduce waste." },
+                    { title: "Quality Assurance", description: "Ensure consistent product quality with inspections." }
+                ],
+                related: ["inventory", "projects", "quality"]
+            },
+            ecommerce: {
+                title: "E-Commerce",
+                description: "Build your online store with integrated shopping cart, payments, and order management. ERPNext e-commerce syncs seamlessly with your inventory and accounting.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>`,
+                screenshots: [
+                    { label: "E-Commerce Dashboard", src: "https://frappe.erpnext.com/files/pos.png" },
+                    { label: "Online Store", src: "https://frappe.erpnext.com/files/pos.png" },
+                    { label: "Order Management", src: "https://frappe.erpnext.com/files/pos.png" },
+                    { label: "POS Interface", src: "https://frappe.erpnext.com/files/pos.png" }
+                ],
+                features: [
                     { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
                     { title: "Shopping Cart", description: "Full-featured cart with discount codes and promotions." },
                     { title: "Payment Gateway", description: "Integrated payments with multiple gateway options." },
@@ -900,10 +965,58 @@ icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
                 </svg>`,
                 screenshots: [
                     { label: "Website Builder", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
-                    { label: "Page Editor", src: "https://frappe.erpnext.com/files/imageba8eb9.png" },
-                    { label: "Theme Settings", src: "https://frappe.erpnext.com/files/imageee2334.png" },
-                    { label: "Blog Management", src: "https://frappe.erpnext.com/files/image91e7eb.png" }
+                    { label: "Page Editor", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Theme Settings", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Blog Management", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" }
                 ],
+                features: [
+                    { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
+                    { title: "Responsive Templates", description: "Mobile-friendly themes that look great on any device." },
+                    { title: "SEO Tools", description: "Built-in SEO optimization for better search rankings." },
+                    { title: "Blog Integration", description: "Create and manage blog content easily." },
+                    { title: "Web Forms", description: "Build custom forms for lead generation." },
+                    { title: "Theme Customization", description: "Customize colors, fonts, and layouts." },
+                    { title: "Multi-Language", description: "Create content in multiple languages." },
+                    { title: "Analytics", description: "Track visitor behavior and performance metrics." }
+                ],
+                benefits: [
+                    { title: "No Coding Required", description: "Build professional sites without technical skills." },
+                    { title: "Integrated with ERP", description: "Forms and data connect directly to ERPNext." },
+                    { title: "Fast Loading", description: "Optimized for speed and performance." }
+                ],
+                related: ["crm", "ecommerce"]
+            }
+        };
+                    { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
+                    { title: "Shopping Cart", description: "Full-featured cart with discount codes and promotions." },
+                    { title: "Payment Gateway", description: "Integrated payments with multiple gateway options." },
+                    { title: "Order Management", description: "Process orders from placement to delivery." },
+                    { title: "Inventory Sync", description: "Automatic inventory updates across all channels." },
+                    { title: "Customer Accounts", description: "Customers can track orders and view history." },
+                    { title: "SEO Optimization", description: "Built-in SEO tools for better search visibility." },
+                    { title: "Multi-Channel", description: "Sell on multiple channels from single inventory." }
+                ],
+                benefits: [
+                    { title: "Unified Operations", description: "Manage online and offline sales in one system." },
+                    { title: "Faster Checkout", description: "Streamlined checkout process reduces cart abandonment." },
+                    { title: "Real-Time Updates", description: "Instant sync between store and warehouse." }
+                ],
+                related: ["inventory", "accounting", "crm"]
+            },
+            website: {
+                title: "Website Builder",
+                description: "Create beautiful websites and web pages with drag-and-drop tools and SEO optimization. ERPNext includes a powerful website builder with responsive templates.",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>`,
+                screenshots: [
+                    { label: "Website Builder", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Page Editor", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Theme Settings", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Blog Management", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" }
+                ],
+                features: [
                     { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
                     { title: "Responsive Templates", description: "Mobile-friendly themes that look great on any device." },
                     { title: "SEO Tools", description: "Built-in SEO optimization for better search rankings." },
