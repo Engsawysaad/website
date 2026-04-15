@@ -31,6 +31,10 @@
         }
 
         .module-detail-visual img {
+            cursor: pointer;
+        }
+
+        .module-detail-visual img {
             width: 100%;
             border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -620,6 +624,54 @@
             display: none !important;
         }
     </style>
+/* Screenshot Modal */
+        .screenshot-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .screenshot-modal.active {
+            display: flex;
+        }
+
+        .screenshot-modal img {
+            max-width: 95%;
+            max-height: 95vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .screenshot-modal .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-modal .modal-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+        .screenshot-modal .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
 </head>
 <body>
     <!-- Navigation -->
@@ -651,6 +703,17 @@
             <li><a href="index.html#faq">FAQ</a></li>
         </ul>
     </nav>
+
+    <!-- Screenshot Modal -->
+    <div class="screenshot-modal" id="screenshotModal">
+        <button class="modal-close" onclick="closeModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <img src="" alt="Full size screenshot" id="modalImage">
+    </div>
 
     <!-- Module Detail Header -->
     <header class="module-detail-header">
@@ -1129,7 +1192,30 @@
             if (module.mainScreenshot) {
                 mainScreenshot.src = module.mainScreenshot;
                 mainScreenshot.style.display = 'block';
+                mainScreenshot.onclick = function() { openModal(module.mainScreenshot); };
             }
+
+            // Screenshot modal functions
+            window.openModal = function(src) {
+                document.getElementById('modalImage').src = src;
+                document.getElementById('screenshotModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeModal = function() {
+                document.getElementById('screenshotModal').classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Close modal on background click
+            document.getElementById('screenshotModal').onclick = function(e) {
+                if (e.target === this) closeModal();
+            };
 
             // Generate features
             const featuresList = document.getElementById('featuresList');
