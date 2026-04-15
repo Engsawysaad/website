@@ -41,12 +41,12 @@
 
         .module-detail-visual .screenshot-logo-watermark {
             position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
+            top: 0;
+            left: 0;
             width: 42px;
             height: 42px;
             background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            border-radius: 10px;
+            border-radius: 10px 0 10px 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -491,13 +491,19 @@
             gap: 1.5rem;
         }
 
-        .screenshot-item {
+.screenshot-item {
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border);
             background: var(--surface);
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        .screenshot-item .screenshot-logo-watermark {
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .screenshot-item .screenshot-logo-watermark {
@@ -530,12 +536,12 @@
         /* Logo watermark on screenshots */
         .screenshot-logo-watermark {
             position: absolute;
-            top: 0.35rem;
-            left: 0.35rem;
+            top: 0;
+            left: 0;
             width: 36px;
             height: 36px;
             background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            border-radius: 10px;
+            border-radius: 10px 0 10px 0;
             display: flex;
             align-items: center;
             justify-content: center;
