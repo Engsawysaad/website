@@ -390,6 +390,77 @@
             margin: 0;
         }
 
+        /* Screenshots Section */
+        .module-screenshots {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            position: relative;
+        }
+
+        .module-screenshots::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(120, 170, 130, 0.15) 0%, transparent 50%, rgba(90, 140, 105, 0.15) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .screenshots-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .screenshot-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .screenshot-item.full-width {
+            grid-column: span 2;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .screenshot-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
         /* Mobile Styles */
         @media (max-width: 1024px) {
             .module-detail-header {
@@ -418,10 +489,19 @@
                 grid-template-columns: 1fr;
             }
 
+            .screenshot-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-item.full-width {
+                grid-column: span 1;
+            }
+
             .module-features,
             .module-benefits,
             .module-cta,
-            .related-modules {
+            .related-modules,
+            .module-screenshots {
                 padding: 3rem 1.5rem;
             }
         }
@@ -546,6 +626,16 @@
         </div>
     </section>
 
+    <!-- Screenshots Section -->
+    <section class="module-screenshots">
+        <div class="screenshots-container">
+            <h2 class="features-section-title">ERPNext v16 Interface</h2>
+            <div class="screenshot-gallery" id="screenshotGallery">
+                <!-- Dynamic screenshots -->
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="module-cta">
         <div class="module-cta-content">
@@ -662,6 +752,12 @@
                     <line x1="12" y1="1" x2="12" y2="23"></line>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>`,
+                screenshots: [
+                    { label: "Profit & Loss Statement", src: "https://frappe.erpnext.com/files/P&L%20V16%201ab954d.webp" },
+                    { label: "Balance Sheet", src: "https://frappe.erpnext.com/files/Balance%20sheet%20V16%201.png" },
+                    { label: "Multi-Company View", src: "https://frappe.erpnext.com/files/multi-company-v16%201a556bd.webp" },
+                    { label: "Cost Center Analysis", src: "https://frappe.erpnext.com/files/Cost%20center%20160750e.webp" }
+                ],
                 features: [
                     { title: "General Ledger", description: "Complete view of all financial transactions with detailed accounting entries." },
                     { title: "Accounts Payable & Receivable", description: "Manage payments to suppliers and track money owed by customers." },
@@ -682,36 +778,17 @@
             crm: {
                 title: "CRM",
                 description: "Build stronger customer connections by tracking interactions, leads, and opportunities. The CRM module helps businesses improve customer relationships, optimize sales efforts, and drive growth.",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>`,
-                features: [
-                    { title: "Lead Management", description: "Capture, track, and nurture potential leads through various sales funnel stages." },
-                    { title: "Opportunity Tracking", description: "Manage sales opportunities, track progress, and forecast revenue." },
-                    { title: "Customer Profiles", description: "Maintain detailed customer information with transaction history." },
-                    { title: "Quotations", description: "Generate professional quotes and send them directly to customers." },
-                    { title: "Email Integration", description: "Sync emails and track all customer communications within the system." },
-                    { title: "Sales Pipeline", description: "Visualize your sales process and identify bottlenecks." },
-                    { title: "Campaign Management", description: "Create and track marketing campaigns across channels." },
-                    { title: "Helpdesk", description: "Provide exceptional customer service with ticket management." }
+                screenshots: [
+                    { label: "E-Commerce Dashboard", src: "https://frappe.erpnext.com/files/pos.png" },
+                    { label: "Online Store", src: "https://frappe.erpnext.com/files/image3f4af0.png" },
+                    { label: "Order Management", src: "https://frappe.erpnext.com/files/image146c23.png" },
+                    { label: "POS Interface", src: "https://frappe.erpnext.com/files/support398a47.png" }
                 ],
-                benefits: [
-                    { title: "Increased Conversion", description: "Improve conversion rates with structured follow-up workflows." },
-                    { title: "Unified View", description: "Get a 360-degree view of every customer interaction." },
-                    { title: "Sales Forecasting", description: "Predict revenue accurately with pipeline analytics." }
-                ],
-                related: ["accounting", "inventory", "website"]
-            },
-            inventory: {
-                title: "Inventory",
-                description: "Keep your inventory in check with real-time tracking and smart stock management tools. ERPNext provides full visibility across warehouses with advanced stock control features.",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                </svg>`,
-                features: [
                     { title: "Multi-Warehouse", description: "Manage stock across multiple warehouses and locations." },
                     { title: "Batch & Serial Tracking", description: "Track items by batch numbers or serial numbers for traceability." },
                     { title: "Stock Valuation", description: "Support for FIFO, Moving Average, and Standard valuation methods." },
@@ -735,7 +812,12 @@
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                 </svg>`,
-                features: [
+                screenshots: [
+                    { label: "HR Dashboard", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
+                    { label: "Employee Management", src: "https://frappe.erpnext.com/files/imageba8eb9.png" },
+                    { label: "Payroll Processing", src: "https://frappe.erpnext.com/files/imageee2334.png" },
+                    { label: "Leave Management", src: "https://frappe.erpnext.com/files/image91e7eb.png" }
+                ],
                     { title: "Employee Records", description: "Maintain comprehensive employee profiles with all necessary data." },
                     { title: "Attendance Tracking", description: "Track employee attendance with flexible check-in methods." },
                     { title: "Leave Management", description: "Handle leave requests, approvals, and leave policies." },
@@ -759,7 +841,12 @@
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>`,
-                features: [
+                screenshots: [
+                    { label: "Project Dashboard", src: "https://frappe.erpnext.com/files/projectscb689c.png" },
+                    { label: "Task Management", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
+                    { label: "Timesheets", src: "https://frappe.erpnext.com/files/image3f4af0.png" },
+                    { label: "Gantt Chart", src: "https://frappe.erpnext.com/files/image146c23.png" }
+                ],
                     { title: "Task Management", description: "Create, assign, and track tasks with clear deadlines." },
                     { title: "Gantt Charts", description: "Visualize project timelines and dependencies graphically." },
                     { title: "Timesheets", description: "Track time spent on tasks and projects accurately." },
@@ -779,35 +866,15 @@
             manufacturing: {
                 title: "Manufacturing",
                 description: "Optimize production workflows with tools for planning, scheduling, and managing work orders. ERPNext manufacturing module simplifies the production cycle with real-time monitoring.",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>`,
-                features: [
-                    { title: "Bill of Materials (BOM)", description: "Define multi-level BOMs with raw materials and operations." },
-                    { title: "Work Orders", description: "Create and track production work orders through completion." },
-                    { title: "Production Planning", description: "Plan production schedules based on demand and capacity." },
-                    { title: "Job Cards", description: "Track individual job progress and assign to operators." },
-                    { title: "Quality Inspection", description: "Perform quality checks at various production stages." },
-                    { title: "Subcontracting", description: "Manage outsourced manufacturing operations." },
-                    { title: "Material Consumption", description: "Track raw material usage against production." },
-                    { title: "Capacity Planning", description: "Visualize production capacity and plan accordingly." }
+                screenshots: [
+                    { label: "Manufacturing Dashboard", src: "https://frappe.erpnext.com/files/manufacturing.png" },
+                    { label: "Work Orders", src: "https://frappe.erpnext.com/files/job-card.webp" },
+                    { label: "BOM Management", src: "https://frappe.erpnext.com/files/imageb1065c.png" },
+                    { label: "Production Planning", src: "https://frappe.erpnext.com/files/imageba8eb9.png" }
                 ],
-                benefits: [
-                    { title: "Reduced Downtime", description: "Minimize production delays with better planning." },
-                    { title: "Cost Control", description: "Track material costs and reduce waste." },
-                    { title: "Quality Assurance", description: "Ensure consistent product quality with inspections." }
-                ],
-                related: ["inventory", "projects", "quality"]
-            },
-            ecommerce: {
-                title: "E-Commerce",
-                description: "Build your online store with integrated shopping cart, payments, and order management. ERPNext e-commerce syncs seamlessly with your inventory and accounting.",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>`,
-                features: [
                     { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
                     { title: "Shopping Cart", description: "Full-featured cart with discount codes and promotions." },
                     { title: "Payment Gateway", description: "Integrated payments with multiple gateway options." },
@@ -831,7 +898,12 @@
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>`,
-                features: [
+                screenshots: [
+                    { label: "Website Builder", src: "https://frappe.erpnext.com/files/imageb17cd2dcf015.webp" },
+                    { label: "Page Editor", src: "https://frappe.erpnext.com/files/imageba8eb9.png" },
+                    { label: "Theme Settings", src: "https://frappe.erpnext.com/files/imageee2334.png" },
+                    { label: "Blog Management", src: "https://frappe.erpnext.com/files/image91e7eb.png" }
+                ],
                     { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
                     { title: "Responsive Templates", description: "Mobile-friendly themes that look great on any device." },
                     { title: "SEO Tools", description: "Built-in SEO optimization for better search rankings." },
@@ -922,6 +994,17 @@
                     <p>Explore the ${moduleTitles[rel].toLowerCase()} module</p>
                 </a>
             `).join('');
+
+            // Generate screenshots
+            const screenshotGallery = document.getElementById('screenshotGallery');
+            if (module.screenshots) {
+                screenshotGallery.innerHTML = module.screenshots.map((shot, index) => `
+                    <div class="screenshot-item ${index % 3 === 0 ? 'full-width' : ''}">
+                        <img src="${shot.src}" alt="${shot.label}" loading="lazy" onerror="this.style.display='none'">
+                        <div class="screenshot-label">${shot.label}</div>
+                    </div>
+                `).join('');
+            }
         }
 
         // Mobile menu toggle
