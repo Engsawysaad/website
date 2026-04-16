@@ -1210,11 +1210,12 @@
                 mainScreenshot.onclick = function() { openModal(module.mainScreenshot); };
             }
 
-            // Screenshot modal with pinch-to-zoom
+            // Screenshot modal with pinch-to-zoom and drag
             let scale = 1;
             let isDragging = false;
             let startX, startY, translateX = 0, translateY = 0;
-            let currentTranslateX = 0, currentTranslateY = 0;
+            let lastTouchX, lastTouchY;
+            let imgRect = { left: 0, right: 0, top: 0, bottom: 0 };
 
             window.openModal = function(src) {
                 const modalImg = document.getElementById('modalImage');
@@ -1231,41 +1232,123 @@
             window.closeModal = function() {
                 document.getElementById('screenshotModal').classList.remove('active');
                 document.body.style.overflow = '';
-                // Reset zoom level
                 scale = 1;
                 translateX = 0;
                 translateY = 0;
                 document.getElementById('modalImage').style.transform = 'translate(0, 0) scale(1)';
             };
 
-            // Pinch to zoom on modal image
-            document.getElementById('screenshotModal').addEventListener('touchstart', function(e) {
+            // Get bounds for dragging
+            function getTranslateBounds() {
+                const modalImg = document.getElementById('modalImage');
+                const container = document.getElementById('screenshotModal');
+                if (!modalImg || !container) return { minX: 0, maxX: 0, minY: 0, maxY: 0 };
+                
+                const contRect = container.getBoundingClientRect();
+                const imgWidth = modalImg.width * scale;
+                const imgHeight = modalImg.height * scale;
+                const overflowX = (imgWidth - contRect.width) / 2;
+                const overflowY = (imgHeight - contRect.height) / 2;
+                
+                return {
+                    minX: Math.min(0, -overflowX + 20),
+                    maxX: Math.max(0, overflowX - 20),
+                    minY: Math.min(0, -overflowY + 20),
+                    maxY: Math.max(0, overflowY - 20)
+                };
+            }
+
+            // Touch events for modal image
+            const modalEl = document.getElementById('screenshotModal');
+            const modalImgEl = document.getElementById('modalImage');
+
+            // Touch start
+            modalEl.addEventListener('touchstart', function(e) {
                 if (e.target.id !== 'modalImage') return;
+                e.preventDefault();
+                
                 if (e.touches.length === 2) {
-                    e.preventDefault();
-                    const modalImg = e.target;
-                    const startDistance = Math.hypot(
+                    // Pinch start
+                    const startDist = Math.hypot(
                         e.touches[0].clientX - e.touches[1].clientX,
                         e.touches[0].clientY - e.touches[1].clientY
                     );
-                    modalImg.dataset.startDistance = startDistance;
-                    modalImg.dataset.startScale = scale;
+                    e.target.dataset.startDistance = startDist;
+                    e.target.dataset.startScale = scale;
+                } else if (e.touches.length === 1 && scale > 1) {
+                    // Drag start
+                    isDragging = true;
+                    startX = e.touches[0].clientX - translateX;
+                    startY = e.touches[0].clientY - translateY;
+                }
+            }, { passive: false });
+
+            // Touch move
+            modalEl.addEventListener('touchmove', function(e) {
+                if (e.target.id !== 'modalImage') return;
+                e.preventDefault();
+                
+                if (e.touches.length === 2) {
+                    // Pinch zoom
+                    const currentDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    const startDist = parseFloat(e.target.dataset.startDistance) || currentDist;
+                    const startScale = parseFloat(e.target.dataset.startScale) || 1;
+                    scale = Math.min(Math.max(startScale * (currentDist / startDist), 1), 4);
+                    e.target.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                } else if (e.touches.length === 1 && isDragging && scale > 1) {
+                    // Drag
+                    const bounds = getTranslateBounds();
+                    let newX = e.touches[0].clientX - startX;
+                    let newY = e.touches[0].clientY - startY;
+                    
+                    // Clamp to bounds
+                    translateX = Math.max(bounds.minX, Math.min(bounds.maxX, newX));
+                    translateY = Math.max(bounds.minY, Math.min(bounds.maxY, newY));
+                    
+                    e.target.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                }
+            }, { passive: false });
+
+            // Touch end
+            modalEl.addEventListener('touchend', function(e) {
+                if (e.target.id !== 'modalImage') return;
+                if (e.touches.length === 0) {
+                    isDragging = false;
                 }
             });
 
-            document.getElementById('screenshotModal').addEventListener('touchmove', function(e) {
-                const modalImg = e.target;
-                if (e.target.id !== 'modalImage' || e.touches.length !== 2) return;
-                e.preventDefault();
-                const currentDistance = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-                const startDistance = parseFloat(modalImg.dataset.startDistance) || currentDistance;
-                const startScale = parseFloat(modalImg.dataset.startScale) || 1;
-                
-                scale = Math.min(Math.max(startScale * (currentDistance / startDistance), 1), 4);
-                modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            // Mouse drag for desktop
+            let isMouseDragging = false;
+            let mouseStartX, mouseStartY;
+
+            modalImgEl.addEventListener('mousedown', function(e) {
+                if (scale > 1) {
+                    isMouseDragging = true;
+                    mouseStartX = e.clientX - translateX;
+                    mouseStartY = e.clientY - translateY;
+                    e.preventDefault();
+                }
+            });
+
+            modalImgEl.addEventListener('mousemove', function(e) {
+                if (isMouseDragging && scale > 1) {
+                    const bounds = getTranslateBounds();
+                    let newX = e.clientX - mouseStartX;
+                    let newY = e.clientY - mouseStartY;
+                    
+                    translateX = Math.max(bounds.minX, Math.min(bounds.maxX, newX));
+                    translateY = Math.max(bounds.minY, Math.min(bounds.maxY, newY));
+                    
+                    modalImgEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isMouseDragging = false;
+            });
             });
 
             // Close modal on escape key
