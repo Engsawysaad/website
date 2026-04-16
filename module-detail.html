@@ -1189,6 +1189,13 @@
         // Parse URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const currentModule = urlParams.get('module') || 'accounting';
+        
+        // Debug check
+        console.log('URL:', window.location.href);
+        console.log('URL params:', window.location.search);
+        console.log('Current module key:', currentModule);
+        console.log('moduleData object:', typeof moduleData);
+        console.log('moduleData has accounting:', 'accounting' in moduleData);
 
         // Get module data
         const module = moduleData[currentModule];
