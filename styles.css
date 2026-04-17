@@ -116,10 +116,11 @@ body {
 .nav-links a.active,
 .nav-links a.active:link,
 .nav-links a.active:visited,
-.nav-links a.active:hover {
+.nav-links li a.active {
     color: var(--accent) !important;
     font-weight: 600 !important;
     text-decoration: none !important;
+    background: transparent !important;
 }
 
 .nav-cta {
