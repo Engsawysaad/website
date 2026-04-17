@@ -21,11 +21,21 @@ body,
 .page-container,
 .main-section,
 .container,
-.web-container {
+.web-container,
+.web-sidebar,
+.layout-section,
+.layout-main-section {
     margin: 0 !important;
     padding: 0 !important;
     max-width: none !important;
     width: 100% !important;
+    background: transparent !important;
+}
+
+/* Fix navbar and footer */
+.navbar, .header-nav, .web-header,
+.footer, .web-footer {
+    display: none !important;
 }
 
 /* Reset common ERPNext elements */
@@ -34,9 +44,65 @@ body,
 .content,
 .page-content,
 #main-container,
-#page-container {
+#page-container,
+.page-head,
+.page-title,
+.page-content-head,
+.layout-head {
     margin: 0 !important;
     padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+/* Remove ERPNext shadows and borders */
+.card, .panel, .web-form-card,
+.frappe-card, .form-card {
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Fix text sizing */
+h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th {
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+/* Remove ERPNext font overrides */
+.web-page-generator body,
+body .web-page-generator {
+    font-family: 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Fix Hero Section specific overrides */
+.hero {
+    min-height: auto !important;
+    padding: 4rem 2rem 2rem !important;
+}
+
+.hero h1 {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+}
+
+.hero-description {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Fix any remaining large gaps */
+.section {
+    padding: 3rem 2rem !important;
+}
+
+.features-section {
+    padding: 3rem 2rem !important;
+}
+
+.feature-card {
+    padding: 1.5rem !important;
+    margin: 0.5rem !important;
 }
 
 * {
