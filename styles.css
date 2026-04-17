@@ -113,9 +113,13 @@ body {
 } 
 
 .nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a.active:link,
+.nav-links a.active:visited,
+.nav-links a.active:hover {
     color: var(--accent) !important;
-    font-weight: 600;
+    font-weight: 600 !important;
+    text-decoration: none !important;
 }
 
 .nav-cta {
@@ -1130,7 +1134,9 @@ body {
     }
     
     .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a.active,
+    .nav-links a.active:link,
+    .nav-links a.active:visited {
         color: var(--accent) !important;
         font-weight: 600 !important;
     }
