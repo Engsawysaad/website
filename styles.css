@@ -1,3 +1,19 @@
+/* Hide ERPNext Header/Navbar on website pages */
+.navbar-brand,
+.navbar-toggler,
+.navbar-collapse,
+#language-switcher,
+.website-post-login,
+.nav-item.dropdown {
+    display: none !important;
+}
+
+/* Hide ERPNext Footer powered by */
+.footer-powered,
+.footer-col-right {
+    display: none !important;
+}
+
 :root {
     --primary: #0f172a;
     --primary-light: #1e293b;
