@@ -15,6 +15,30 @@
     --gradient-to: rgb(205, 250, 206);
 }
 
+/* ERPNext Override - Add at top to reset default ERPNext styles */
+body.web-page-generator, 
+body,
+.page-container,
+.main-section,
+.container,
+.web-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Reset common ERPNext elements */
+.section, 
+.page-section,
+.content,
+.page-content,
+#main-container,
+#page-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 * {
     margin: 0;
     padding: 0;
