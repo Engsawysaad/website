@@ -117,7 +117,7 @@ body {
 .nav-links a.active:link,
 .nav-links a.active:visited,
 .nav-links li a.active {
-    color: var(--accent) !important;
+    color: #0891b2 !important;
     font-weight: 600 !important;
     text-decoration: none !important;
     background: transparent !important;
@@ -1138,7 +1138,7 @@ body {
     .nav-links a.active,
     .nav-links a.active:link,
     .nav-links a.active:visited {
-        color: var(--accent) !important;
+        color: #0891b2 !important;
         font-weight: 600 !important;
     }
     
