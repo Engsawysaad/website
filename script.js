@@ -15,7 +15,7 @@ var navLinksItems = document.querySelectorAll('.nav-links a');
 var sections = document.querySelectorAll('section[id]');
 
 function updateActiveMenu() {
-    var scrollPos = window.scrollY + 150; // Offset for header
+    var scrollPos = window.scrollY + 150;
     
     for (var i = sections.length - 1; i >= 0; i--) {
         var section = sections[i];
@@ -34,7 +34,6 @@ function updateActiveMenu() {
         }
     }
     
-    // Default to first item if at top
     if (scrollPos < 200 && navLinksItems.length > 0) {
         navLinksItems.forEach(function(link) {
             link.classList.remove('active');
@@ -42,7 +41,6 @@ function updateActiveMenu() {
     }
 }
 
-// Initial check
 if (sections.length > 0) {
     updateActiveMenu();
     window.addEventListener('scroll', updateActiveMenu);
@@ -94,7 +92,7 @@ for (var i = 0; i < anchorLinks.length; i++) {
     });
 }
 
-// Mobile menu toggle - run immediately
+// Mobile menu toggle
 (function() {
     var navToggle = document.querySelector('.nav-toggle');
     var navLinks = document.querySelector('.nav-links');
@@ -104,37 +102,23 @@ for (var i = 0; i < anchorLinks.length; i++) {
     if (!navToggle || !navLinks) return;
     
     function isMobile() {
-        return window.innerWidth <= 768;
+        return window.innerWidth <= 1024;
     }
     
     function toggleMenu() {
-        if (!isMobile()) return;
-        
         var isOpen = navLinks.classList.contains('active');
+        
         if (isOpen) {
             navLinks.classList.remove('active');
             navLinks.style.display = 'none';
-            // Show hamburger, hide close
             if (iconHamburger) iconHamburger.style.display = 'block';
             if (iconClose) iconClose.style.display = 'none';
         } else {
             navLinks.classList.add('active');
             navLinks.style.display = 'flex';
-            // Show close, hide hamburger
             if (iconHamburger) iconHamburger.style.display = 'none';
             if (iconClose) iconClose.style.display = 'block';
         }
-    }
-    
-    // Initial state for mobile - but don't set inline styles on desktop
-    if (isMobile() && !navLinks.classList.contains('active')) {
-        navLinks.style.display = 'none';
-    } else if (!isMobile()) {
-        // Desktop: ensure menu is visible and remove inline styles
-        navLinks.style.display = '';
-        navLinks.classList.remove('active');
-        if (iconHamburger) iconHamburger.style.display = '';
-        if (iconClose) iconClose.style.display = 'none';
     }
     
     navToggle.addEventListener('click', function(e) {
@@ -142,31 +126,28 @@ for (var i = 0; i < anchorLinks.length; i++) {
         toggleMenu();
     });
     
-    // Close menu when clicking a link - only on mobile
+    // Close menu when clicking a link
     var navLinkItems = navLinks.querySelectorAll('a');
     for (var i = 0; i < navLinkItems.length; i++) {
         navLinkItems[i].addEventListener('click', function() {
             if (isMobile()) {
                 navLinks.classList.remove('active');
                 navLinks.style.display = 'none';
-                // Reset icons
                 if (iconHamburger) iconHamburger.style.display = 'block';
                 if (iconClose) iconClose.style.display = 'none';
             }
         });
     }
     
-    // Handle window resize properly
+    // Handle window resize
     window.addEventListener('resize', function() {
         if (isMobile()) {
-            // Mobile view
             if (!navLinks.classList.contains('active')) {
                 navLinks.style.display = 'none';
             }
             if (iconHamburger) iconHamburger.style.display = 'block';
             if (iconClose) iconClose.style.display = 'none';
         } else {
-            // Desktop view - always show menu
             navLinks.style.display = '';
             navLinks.classList.remove('active');
             if (iconHamburger) iconHamburger.style.display = '';

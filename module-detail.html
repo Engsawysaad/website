@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ERPNext - Module Details</title>
+    <title>FlowERP - Module Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='10' fill='%230891b2'/%3E%3Cpath d='M10 20L20 10L30 20L20 30L10 20Z' fill='white'/%3E%3Cpath d='M20 16L24 20L20 24L16 20L20 16Z' fill='%230891b2'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="/styles.css">
+    <!-- Styles loaded by FlowERP theme -->
     <style>
         /* Module Detail Page Styles */
         * {
@@ -686,6 +686,65 @@
         .hidden {
             display: none !important;
         }
+
+        /* Mobile nav styles */
+        @media (max-width: 1024px) {
+            .nav-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin: 0;
+                color: var(--primary);
+                z-index: 1002;
+            }
+
+            .nav-toggle svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                gap: 0;
+                z-index: 1001;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 0;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: #0891b2 !important;
+                font-weight: 600 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -697,7 +756,7 @@
                 <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="white"/>
                 <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="#0891b2"/>
             </svg>
-            <span>ERPNext</span>
+            <span>Flowsoft</span>
         </a>
         <button class="nav-toggle" aria-label="Toggle menu">
             <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -711,7 +770,7 @@
             </svg>
         </button>
         <ul class="nav-links">
-            <li><a href="/home#hero">Home</a></li>
+            <li><a href="/home#hero">FlowERP</a></li>
             <li><a href="/home#modules" class="active">Modules</a></li>
             <li><a href="/home#features">Features</a></li>
             <li><a href="/home#testimonials">Testimonials</a></li>
@@ -807,7 +866,7 @@
     <!-- Screenshots Section -->
     <section class="module-screenshots">
         <div class="screenshots-container">
-            <h2 class="features-section-title">ERPNext v16 Interface</h2>
+            <h2 class="features-section-title">FlowERP v16 Interface</h2>
             <div class="screenshot-gallery" id="screenshotGallery">
                 <!-- Dynamic screenshots -->
             </div>
@@ -818,7 +877,7 @@
     <section class="module-cta">
         <div class="module-cta-content">
             <h2>Ready to Get Started?</h2>
-            <p>Start your free trial today and experience the power of ERPNext.</p>
+            <p>Start your free trial today and experience the power of FlowERP.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary btn-large">
                     Start Free Trial
@@ -852,9 +911,9 @@
                         <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#0891b2"/>
                         <path d="M20 16L24 20L20 24L16 20L20 16Z" fill="white"/>
                     </svg>
-                    <span>ERPNext</span>
+                    <span>Flowsoft</span>
                 </div>
-                <p>The world's most popular open-source ERP system. Trusted by businesses worldwide for comprehensive business management.</p>
+                <p>Powering Your Digital Transformation.</p>
                 <div class="footer-social">
                     <a href="#">
                         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -910,7 +969,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ERPNext. All rights reserved. Open Source under GNU GPL.</p>
+            <p>&copy; 2026 Flowsoft. All rights reserved. Open Source under GNU GPL.</p>
             <div class="footer-bottom-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -919,23 +978,23 @@
         </div>
     </footer>
 
-    <script src="/script.js"></script>
+    <!-- Scripts loaded by FlowERP theme -->
 <script>
-        // Module Data from ERPNext Official Documentation
+        // Module Data from FlowERP Official Documentation
         const moduleData = {
             accounting: {
                 title: "Accounting",
-                description: "Manage your financials with precision, from invoicing to reporting and everything in between. ERPNext accounting software is one of its strongest modules, supporting complete financial management without needing third-party tools.",
+                description: "Manage your financials with precision, from invoicing to reporting and everything in between. FlowERP accounting software is one of its strongest modules, supporting complete financial management without needing third-party tools.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="1" x2="12" y2="23"></line>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>`,
-                mainScreenshot: "/files/accounting-dashboard.png",
+                mainScreenshot: "/files/accounts-chart-of-accounts-1.png",
                 screenshots: [
-                    { label: "Accounting Dashboard", src: "/files/accounting-dashboard.png" },
-                    { label: "General Ledger", src: "/files/accounting-ledger.png" },
-                    { label: "Financial Reports", src: "/files/accounting-reports.png" },
-                    { label: "Purchase Order", src: "/files/purchase-order.png" }
+                    { label: "Chart of Accounts", src: "/files/accounts-chart-of-accounts-1.png" },
+                    { label: "General Ledger", src: "/files/accounts-general-ledger.png" },
+                    { label: "Sales Invoice", src: "/files/accounts-sales-invoice.png" },
+                    { label: "Purchase Invoice", src: "/files/accounts-purchase-invoice.png" }
                 ],
                 features: [
                     { title: "General Ledger", description: "Complete view of all financial transactions with detailed accounting entries." },
@@ -963,12 +1022,12 @@
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>`,
-                mainScreenshot: "/files/crm-dashboard.png",
+                mainScreenshot: "/files/crm-customer.png",
                 screenshots: [
-                    { label: "CRM Dashboard", src: "/files/crm-dashboard.png" },
-                    { label: "Lead Pipeline", src: "/files/crm-pipeline.png" },
-                    { label: "Customer Management", src: "/files/crm-customers.png" },
-                    { label: "Sales Pipeline", src: "/files/crm-sales.png" }
+                    { label: "Customer", src: "/files/crm-customer.png" },
+                    { label: "Lead", src: "/files/crm-lead.png" },
+                    { label: "Opportunity", src: "/files/crm-opportunity.png" },
+                    { label: "Contact", src: "/files/crm-contact.png" }
                 ],
                 features: [
                     { title: "Lead Management", description: "Capture, track, and nurture potential leads through various sales funnel stages." },
@@ -989,16 +1048,16 @@
             },
             inventory: {
                 title: "Inventory",
-                description: "Keep your inventory in check with real-time tracking and smart stock management tools. ERPNext provides full visibility across warehouses with advanced stock control features.",
+                description: "Keep your inventory in check with real-time tracking and smart stock management tools. FlowERP provides full visibility across warehouses with advanced stock control features.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                 </svg>`,
-                mainScreenshot: "/files/inventory-dashboard.png",
+                mainScreenshot: "/files/inventory-item-1.png",
                 screenshots: [
-                    { label: "Stock Dashboard", src: "/files/inventory-dashboard.png" },
-                    { label: "Item Master", src: "/files/inventory-item.png" },
-                    { label: "Warehouse", src: "/files/inventory-warehouse.png" },
-                    { label: "Stock Reports", src: "/files/inventory-warehouse.png" }
+                    { label: "Item Master", src: "/files/inventory-item-1.png" },
+                    { label: "Delivery Note", src: "/files/inventory-delivery-note.png" },
+                    { label: "Purchase Receipt", src: "/files/inventory-purchase-receipt.png" },
+                    { label: "Stock Entry", src: "/files/inventory-stock-entry.png" }
                 ],
                 features: [
                     { title: "Multi-Warehouse", description: "Manage stock across multiple warehouses and locations." },
@@ -1024,12 +1083,12 @@
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                 </svg>`,
-                mainScreenshot: "/files/hr-dashboard.png",
+                mainScreenshot: "/files/hr-employee.png",
                 screenshots: [
-                    { label: "HR Dashboard", src: "/files/hr-dashboard.png" },
-                    { label: "Employee Records", src: "/files/hr-employee.png" },
-                    { label: "Payroll", src: "/files/hr-payroll.png" },
-                    { label: "Leave Management", src: "/files/hr-leave.png" }
+                    { label: "Employee", src: "/files/hr-employee.png" },
+                    { label: "Salary Slip", src: "/files/hr-salary-slip.png" },
+                    { label: "Attendance", src: "/files/hr-attendance.png" },
+                    { label: "Leave Application", src: "/files/hr-leave-application.png" }
                 ],
                 features: [
                     { title: "Employee Records", description: "Maintain comprehensive employee profiles with all necessary data." },
@@ -1050,17 +1109,17 @@
             },
             projects: {
                 title: "Projects",
-                description: "Stay on track and meet deadlines with tools for planning, collaborating, and managing tasks. ERPNext project management includes Gantt charts, timesheets, and resource allocation.",
+                description: "Stay on track and meet deadlines with tools for planning, collaborating, and managing tasks. FlowERP project management includes Gantt charts, timesheets, and resource allocation.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>`,
-                mainScreenshot: "/files/projects-dashboard.png",
+                mainScreenshot: "/files/projects-project.png",
                 screenshots: [
-                    { label: "Projects Dashboard", src: "/files/projects-dashboard.png" },
-                    { label: "Task Management", src: "/files/projects-dashboard.png" },
-                    { label: "Project Tasks", src: "/files/projects-dashboard.png" },
-                    { label: "Gantt Chart", src: "/files/projects-dashboard.png" }
+                    { label: "Project", src: "/files/projects-project.png" },
+                    { label: "Task", src: "/files/projects-task.png" },
+                    { label: "Gantt Chart", src: "/files/projects-gantt-chart.png" },
+                    { label: "Time Log", src: "/files/projects-time-log.png" }
                 ],
                 features: [
                     { title: "Task Management", description: "Create, assign, and track tasks with clear deadlines." },
@@ -1081,16 +1140,16 @@
             },
             manufacturing: {
                 title: "Manufacturing",
-                description: "Optimize production workflows with tools for planning, scheduling, and managing work orders. ERPNext manufacturing module simplifies the production cycle with real-time monitoring.",
+                description: "Optimize production workflows with tools for planning, scheduling, and managing work orders. FlowERP manufacturing module simplifies the production cycle with real-time monitoring.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>`,
-                mainScreenshot: "/files/manufacturing-dashboard.png",
+                mainScreenshot: "/files/manufacturing-production-order.png",
                 screenshots: [
-                    { label: "Manufacturing Dashboard", src: "/files/manufacturing-dashboard.png" },
-                    { label: "Work Orders", src: "/files/manufacturing-jobcard.png" },
-                    { label: "BOM", src: "/files/manufacturing-dashboard.png" },
-                    { label: "Production", src: "/files/manufacturing-dashboard.png" }
+                    { label: "Production Order", src: "/files/manufacturing-production-order.png" },
+                    { label: "BOM", src: "/files/manufacturing-bom.png" },
+                    { label: "Workstation", src: "/files/manufacturing-workstation.png" },
+                    { label: "Operations", src: "/files/manufacturing-operation.png" }
                 ],
                 features: [
                     { title: "Bill of Materials (BOM)", description: "Define multi-level BOMs with raw materials and operations." },
@@ -1111,18 +1170,18 @@
             },
             ecommerce: {
                 title: "E-Commerce",
-                description: "Build your online store with integrated shopping cart, payments, and order management. ERPNext e-commerce syncs seamlessly with your inventory and accounting.",
+                description: "Build your online store with integrated shopping cart, payments, and order management. FlowERP e-commerce syncs seamlessly with your inventory and accounting.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>`,
-                mainScreenshot: "/files/ecommerce-pos.png",
+                mainScreenshot: "/files/website-web-page.png",
                 screenshots: [
-                    { label: "POS Dashboard", src: "/files/ecommerce-pos.png" },
-                    { label: "Point of Sale", src: "/files/ecommerce-checkout.png" },
-                    { label: "Checkout", src: "/files/ecommerce-pos.png" },
-                    { label: "Shift Management", src: "/files/ecommerce-checkout.png" }
+                    { label: "Shopping Cart", src: "/files/website-web-page.png" },
+                    { label: "Website Builder", src: "/files/website-blog.png" },
+                    { label: "Product Catalog", src: "/files/website-web-page.png" },
+                    { label: "POS Settings", src: "/files/website-web-page.png" }
                 ],
                 features: [
                     { title: "Online Storefront", description: "Beautiful, responsive storefront with product catalogs." },
@@ -1143,17 +1202,17 @@
             },
             website: {
                 title: "Website Builder",
-                description: "Create beautiful websites and web pages with drag-and-drop tools and SEO optimization. ERPNext includes a powerful website builder with responsive templates.",
+                description: "Create beautiful websites and web pages with drag-and-drop tools and SEO optimization. FlowERP includes a powerful website builder with responsive templates.",
                 icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>`,
-                mainScreenshot: "/files/ecommerce-checkout.png",
+                mainScreenshot: "/files/website-blog.png",
                 screenshots: [
-                    { label: "Website Builder", src: "/files/ecommerce-checkout.png" },
-                    { label: "Pricing Page", src: "/files/ecommerce-checkout.png" },
-                    { label: "E-commerce", src: "/files/ecommerce-pos.png" },
-                    { label: "Web Forms", src: "/files/ecommerce-pos.png" }
+                    { label: "Website Builder", src: "/files/website-blog.png" },
+                    { label: "Web Pages", src: "/files/website-web-page.png" },
+                    { label: "Shopping Cart", src: "/files/website-web-page.png" },
+                    { label: "Web Forms", src: "/files/website-web-page.png" }
                 ],
                 features: [
                     { title: "Drag-and-Drop Editor", description: "Build pages easily with intuitive drag-and-drop interface." },
@@ -1167,7 +1226,7 @@
                 ],
                 benefits: [
                     { title: "No Coding Required", description: "Build professional sites without technical skills." },
-                    { title: "Integrated with ERP", description: "Forms and data connect directly to ERPNext." },
+                    { title: "Integrated with ERP", description: "Forms and data connect directly to FlowERP." },
                     { title: "Fast Loading", description: "Optimized for speed and performance." }
                 ],
                 related: ["crm", "ecommerce"]
@@ -1183,26 +1242,21 @@
             projects: "Projects",
             manufacturing: "Manufacturing",
             ecommerce: "E-Commerce",
-            website: "Website Builder"
+            website: "Website Builder",
+            quality: "Quality Management",
+            purchasing: "Purchasing"
         };
 
-        // Parse URL parameter
+// Parse URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const currentModule = urlParams.get('module') || 'accounting';
         
-        // Debug check
-        console.log('URL:', window.location.href);
-        console.log('URL params:', window.location.search);
-        console.log('Current module key:', currentModule);
-        console.log('moduleData object:', typeof moduleData);
-        console.log('moduleData has accounting:', 'accounting' in moduleData);
-
         // Get module data
         const module = moduleData[currentModule];
 
         if (module) {
             // Update page title
-            document.title = `ERPNext - ${module.title}`;
+            document.title = `FlowERP - ${module.title}`;
 
             // Update header
             document.getElementById('moduleIcon').innerHTML = module.icon;
@@ -1424,14 +1478,6 @@
             }
         }
 
-        // Mobile menu toggle
-        document.querySelector('.nav-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.querySelector('.icon-hamburger').style.display = 
-                this.querySelector('.nav-links').classList.contains('active') ? 'none' : 'block';
-            this.querySelector('.icon-close').style.display = 
-                this.querySelector('.nav-links').classList.contains('active') ? 'block' : 'none';
-        });
-    </script>
+        </script>
 </body>
 </html>
