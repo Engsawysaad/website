@@ -1,0 +1,20 @@
+{
+  "detail": {
+    "invoice_number": "MEDIUM-001",
+    "currency_code": "USD"
+  },
+  "merchant_info": {
+    "email": "Engsawysaad@gmail.com",
+    "business_name": "Flow Soft"
+  },
+  "items": [
+    {
+      "name": "Flow Soft Medium Plan - Monthly Subscription",
+      "quantity": 1,
+      "unit_amount": {
+        "currency_code": "USD",
+        "value": "200.00"
+      }
+    }
+  ]
+}

@@ -2,9 +2,13 @@
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "paypal": {
-      "type": "remote",
-      "url": "https://mcp.sandbox.paypal.com/sse",
-      "enabled": true
+      "type": "local",
+      "command": ["npx", "-y", "@paypal/mcp", "--tools=all"],
+      "enabled": true,
+      "environment": {
+        "PAYPAL_ACCESS_TOKEN": "A21AAKkO6LbkfuJvpaOCYUj2WKD3B3rNq_uLEBSabedKxPft4CjSWouUDLsK-pwPJ9CNVJnoZ1SO4USNH3XrGh80VhXxmjkzQ",
+        "PAYPAL_ENVIRONMENT": "SANDBOX"
+      }
     }
   }
 }
