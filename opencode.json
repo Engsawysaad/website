@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "paypal": {
+      "type": "remote",
+      "url": "https://mcp.sandbox.paypal.com/sse",
+      "enabled": true
+    }
+  }
+}
