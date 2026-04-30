@@ -1,0 +1,21 @@
+{
+  "merchant_info": {
+    "email": "Engsawysaad@gmail.com",
+    "business_name": "Flow Soft"
+  },
+  "billing_info": [
+    {
+      "email": "customer@example.com"
+    }
+  ],
+  "items": [
+    {
+      "name": "Flow Soft Enterprise Plan - Monthly Subscription",
+      "quantity": 1,
+      "unit_price": {
+        "currency": "USD",
+        "value": "1000.00"
+      }
+    }
+  ]
+}
