@@ -1,12 +1,22 @@
 /* ==========================================
-   SA Web Form - Flow Soft Theme Styles
-   ==========================================
-   This file styles the Web Form at /sa to match
-   the Flow Soft website design system.
-   ========================================== */
+    SA Web Form - Flow Soft Theme Styles
+    ==========================================
+    This file styles the Web Form at /sa to match
+    the Flow Soft website design system.
+    ========================================== */
 
-/* Import Google Fonts (if not already loaded) */
+/* ==========================================
+    FONTS - Import directly for reliability
+    ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ==========================================
+   FONTS - Load via link in HTML head for reliability
+   Add this to Website Settings > Custom HTML or via Client Script:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+   ========================================== */
 
 /* ==========================================
    CSS Variables - Matching Flow Soft Design
@@ -40,433 +50,460 @@
     --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-
+ 
 /* ==========================================
-   Page Wrapper & Container
-   ========================================== */
-#page-sa {
-    font-family: var(--font-body);
-    color: var(--text);
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    min-height: 100vh;
-    padding: 2rem 1rem;
+    Body Gradient - Must be on body directly for full page coverage
+    ========================================== */
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
 }
 
-#page-sa .page-content-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
+/* ==========================================
+    Page Wrapper & Container
+    ========================================== */
+body #page-sa {
+    font-family: var(--font-body) !important;
+    color: var(--text) !important;
+    min-height: 100vh !important;
+    padding: 2rem 1rem !important;
+}
+
+body #page-sa .page-content-wrapper {
+    max-width: 800px !important;
+    margin: 0 auto !important;
 }
 
 /* ==========================================
    Web Form Container
    ========================================== */
-#page-sa .web-form-container {
-    background: var(--surface);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    padding: 3rem;
-    margin-top: 2rem;
+body #page-sa .web-form-container {
+    background: var(--surface) !important;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: var(--shadow-xl) !important;
+    padding: 3rem !important;
+    margin-top: 2rem !important;
 }
 
 /* ==========================================
    Web Form Header
    ========================================== */
-#page-sa .web-form-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
+body #page-sa .web-form-header {
+    text-align: center !important;
+    margin-bottom: 2.5rem !important;
 }
 
-#page-sa .web-form-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+body #page-sa .web-form-head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
 }
 
-#page-sa .web-form-title h1 {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 0;
-    line-height: 1.2;
+body #page-sa .web-form-title h1 {
+    font-family: var(--font-heading) !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
 }
 
-#page-sa .web-form-title .ellipsis {
-    display: block;
-    overflow: visible;
-    text-overflow: unset;
-    white-space: normal;
+body #page-sa .web-form-title .ellipsis {
+    display: block !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
 }
 
-#page-sa .indicator-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: var(--warning);
-    color: white;
+body #page-sa .indicator-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.375rem 1rem !important;
+    border-radius: 9999px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    background: var(--warning) !important;
+    color: white !important;
 }
 
-#page-sa .indicator-pill.orange {
-    background: var(--warning);
+body #page-sa .indicator-pill.orange {
+    background: var(--warning) !important;
 }
 
-#page-sa .indicator-pill.green {
-    background: var(--success);
+body #page-sa .indicator-pill.green {
+    background: var(--success) !important;
 }
 
 /* ==========================================
    Banner Image
    ========================================== */
-#page-sa .web-form-banner-image {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin: 0 auto 2rem;
-    display: block;
+body #page-sa .web-form-banner-image {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto 2rem !important;
+    display: block !important;
 }
 
 /* ==========================================
    Web Form Body & Fields
    ========================================== */
-#page-sa .web-form-body {
-    margin: 2rem 0;
+body #page-sa .web-form-body {
+    margin: 2rem 0 !important;
 }
 
-#page-sa .web-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+body #page-sa .web-form-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
 }
 
-/* Form Fields */
-#page-sa .form-control {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
-    background: var(--surface);
-    color: var(--text);
-    width: 100%;
+/* Form Fields - Critical overrides for ERPNext */
+body #page-sa .form-control,
+body #page-sa input.form-control,
+body #page-sa select.form-control,
+body #page-sa textarea.form-control {
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    transition: all 0.2s ease !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    width: 100% !important;
+    box-shadow: none !important;
 }
 
-#page-sa .form-control:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+body #page-sa .form-control:focus,
+body #page-sa input.form-control:focus,
+body #page-sa select.form-control:focus,
+body #page-sa textarea.form-control:focus {
+    outline: none !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1) !important;
 }
 
-#page-sa .form-control:hover {
-    border-color: var(--accent-light);
+body #page-sa .form-control:hover,
+body #page-sa input.form-control:hover,
+body #page-sa select.form-control:hover,
+body #page-sa textarea.form-control:hover {
+    border-color: var(--accent-light) !important;
 }
 
-#page-sa label {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-    display: block;
+body #page-sa label,
+body #page-sa .form-label {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    color: var(--primary) !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
 }
 
-#page-sa .form-group {
-    margin-bottom: 1.5rem;
+body #page-sa .form-group {
+    margin-bottom: 1.5rem !important;
 }
 
 /* Required Field Indicator */
-#page-sa .reqd {
-    color: var(--danger);
-    margin-left: 0.25rem;
+body #page-sa .reqd {
+    color: var(--danger) !important;
+    margin-left: 0.25rem !important;
 }
 
 /* ==========================================
    Box Group & Column Layout
    ========================================== */
-#page-sa .box-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+body #page-sa .box-group {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
 }
 
-#page-sa .box-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+body #page-sa .box-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
 }
 
-#page-sa .box-label {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+body #page-sa .box-label {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
 }
 
-#page-sa .box-area {
+body #page-sa .box-area {
     /* Field area */
 }
 
 /* ==========================================
    Section & Column Breaks
    ========================================== */
-#page-sa .section-break,
-#page-sa .column-break {
+body #page-sa .section-break,
+body #page-sa .column-break {
     /* Handled by box-group layout */
 }
 
 /* ==========================================
    Checkbox Styling
    ========================================== */
-#page-sa input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: var(--accent);
-    cursor: pointer;
+body #page-sa input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    accent-color: var(--accent) !important;
+    cursor: pointer !important;
 }
 
-#page-sa .checkbox label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-weight: 400;
-    font-family: var(--font-body);
+body #page-sa .checkbox label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    cursor: pointer !important;
+    font-weight: 400 !important;
+    font-family: var(--font-body) !important;
 }
 
 /* ==========================================
    Date & Autocomplete Fields
    ========================================== */
-#page-sa input[type="date"] {
-    font-family: var(--font-body);
+body #page-sa input[type="date"] {
+    font-family: var(--font-body) !important;
 }
 
-#page-sa .awesomplete {
-    width: 100%;
+body #page-sa .awesomplete {
+    width: 100% !important;
 }
 
-#page-sa .awesomplete input {
-    width: 100%;
+body #page-sa .awesomplete input {
+    width: 100% !important;
 }
 
-#page-sa .awesomplete ul {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    max-height: 200px;
-    overflow-y: auto;
+body #page-sa .awesomplete ul {
+    background: var(--surface) !important;
+    border: 2px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
 }
 
-#page-sa .awesomplete li {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
+body #page-sa .awesomplete li {
+    padding: 0.75rem 1rem !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
 }
 
-#page-sa .awesomplete li:hover {
-    background: var(--surface-hover);
+body #page-sa .awesomplete li:hover {
+    background: var(--surface-hover) !important;
 }
 
 /* ==========================================
    Web Form Footer & Buttons
    ========================================== */
-#page-sa .web-form-footer {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--border-light);
+body #page-sa .web-form-footer {
+    margin-top: 2.5rem !important;
+    padding-top: 2rem !important;
+    border-top: 2px solid var(--border-light) !important;
 }
 
-#page-sa .web-form-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+body #page-sa .web-form-actions {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
 }
 
-#page-sa .left-area,
-#page-sa .center-area,
-#page-sa .right-area {
-    display: flex;
-    gap: 0.75rem;
+body #page-sa .left-area,
+body #page-sa .center-area,
+body #page-sa .right-area {
+    display: flex !important;
+    gap: 0.75rem !important;
 }
 
-#page-sa .right-area {
-    margin-left: auto;
+body #page-sa .right-area {
+    margin-left: auto !important;
 }
 
-/* Buttons */
-#page-sa .btn {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-md);
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
+/* Buttons - Critical ERPNext Overrides */
+body #page-sa .btn,
+body #page-sa button.btn,
+body #page-sa input[type="button"].btn,
+body #page-sa input[type="submit"].btn {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: var(--radius-md) !important;
+    border: 2px solid transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
 }
 
-#page-sa .btn-primary {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
+body #page-sa .btn-primary,
+body #page-sa button.btn-primary {
+    background: var(--accent) !important;
+    color: white !important;
+    border-color: var(--accent) !important;
 }
 
-#page-sa .btn-primary:hover {
-    background: var(--accent-light);
-    border-color: var(--accent-light);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+body #page-sa .btn-primary:hover,
+body #page-sa button.btn-primary:hover {
+    background: var(--accent-light) !important;
+    border-color: var(--accent-light) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
-#page-sa .btn-default {
-    background: var(--surface);
-    color: var(--text);
-    border-color: var(--border);
+body #page-sa .btn-default,
+body #page-sa button.btn-default {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
 }
 
-#page-sa .btn-default:hover {
-    background: var(--surface-hover);
-    border-color: var(--accent);
+body #page-sa .btn-default:hover,
+body #page-sa button.btn-default:hover {
+    background: var(--surface-hover) !important;
+    border-color: var(--accent) !important;
 }
 
-#page-sa .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+body #page-sa .btn-sm {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
 }
 
-#page-sa .btn-md {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.9rem;
+body #page-sa .btn-md {
+    padding: 0.625rem 1.25rem !important;
+    font-size: 0.9rem !important;
 }
 
-#page-sa .discard-btn {
-    background: transparent;
-    color: var(--text-muted);
-    border-color: var(--border);
+body #page-sa .discard-btn {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    border-color: var(--border) !important;
 }
 
-#page-sa .discard-btn:hover {
-    color: var(--danger);
-    border-color: var(--danger);
-    background: #fef2f2;
+body #page-sa .discard-btn:hover {
+    color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    background: #fef2f2 !important;
 }
 
-#page-sa .submit-btn {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
+body #page-sa .submit-btn,
+body #page-sa button.submit-btn {
+    background: var(--accent) !important;
+    color: white !important;
+    border-color: var(--accent) !important;
 }
 
-#page-sa .submit-btn:hover {
-    background: var(--accent-light);
-    border-color: var(--accent-light);
+body #page-sa .submit-btn:hover,
+body #page-sa button.submit-btn:hover {
+    background: var(--accent-light) !important;
+    border-color: var(--accent-light) !important;
 }
 
 /* ==========================================
    Success Page
    ========================================== */
-#page-sa .success-page {
-    text-align: center;
-    padding: 3rem 2rem;
+body #page-sa .success-page {
+    text-align: center !important;
+    padding: 3rem 2rem !important;
 }
 
-#page-sa .success-header {
-    margin-bottom: 2rem;
+body #page-sa .success-header {
+    margin-bottom: 2rem !important;
 }
 
-#page-sa .success-icon {
-    width: 80px;
-    height: 80px;
-    color: var(--success);
-    margin-bottom: 1rem;
+body #page-sa .success-icon {
+    width: 80px !important;
+    height: 80px !important;
+    color: var(--success) !important;
+    margin-bottom: 1rem !important;
 }
 
-#page-sa .success-title {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 0;
+body #page-sa .success-title {
+    font-family: var(--font-heading) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin: 0 !important;
 }
 
-#page-sa .success-body {
-    margin: 2rem 0;
+body #page-sa .success-body {
+    margin: 2rem 0 !important;
 }
 
-#page-sa .success-message {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
+body #page-sa .success-message {
+    font-size: 1.1rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.6 !important;
 }
 
-#page-sa .success-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--border-light);
+body #page-sa .success-footer {
+    margin-top: 2rem !important;
+    padding-top: 2rem !important;
+    border-top: 2px solid var(--border-light) !important;
 }
 
-#page-sa .new-btn {
-    background: var(--surface);
-    color: var(--text);
-    border: 2px solid var(--border);
+body #page-sa .new-btn {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border: 2px solid var(--border) !important;
 }
 
-#page-sa .new-btn:hover {
-    background: var(--surface-hover);
-    border-color: var(--accent);
+body #page-sa .new-btn:hover {
+    background: var(--surface-hover) !important;
+    border-color: var(--accent) !important;
 }
 
 /* ==========================================
    Paging Dots
    ========================================== */
-#page-sa .paging {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    margin: 1rem 0;
+body #page-sa .paging {
+    display: flex !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+    margin: 1rem 0 !important;
 }
 
-#page-sa .paging .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border);
-    cursor: pointer;
-    transition: all 0.2s ease;
+body #page-sa .paging .dot {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background: var(--border) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
 }
 
-#page-sa .paging .dot.active {
-    background: var(--accent);
-    transform: scale(1.2);
+body #page-sa .paging .dot.active {
+    background: var(--accent) !important;
+    transform: scale(1.2) !important;
 }
 
 /* ==========================================
    Web Form Skeleton (Loading State)
    ========================================== */
-#page-sa .web-form-skeleton .box {
-    background: var(--surface-alt);
-    border-radius: var(--radius-md);
-    animation: pulse 1.5s ease-in-out infinite;
+body #page-sa .web-form-skeleton .box {
+    background: var(--surface-alt) !important;
+    border-radius: var(--radius-md) !important;
+    animation: pulse 1.5s ease-in-out infinite !important;
 }
 
 @keyframes pulse {
     0%, 100% {
-        opacity: 1;
+        opacity: 1 !important;
     }
     50% {
-        opacity: 0.5;
+        opacity: 0.5 !important;
     }
 }
 
@@ -474,50 +511,50 @@
    Responsive Design
    ========================================== */
 @media (max-width: 768px) {
-    #page-sa {
-        padding: 1rem 0.5rem;
+    body #page-sa {
+        padding: 1rem 0.5rem !important;
     }
 
-    #page-sa .web-form-container {
-        padding: 2rem 1.5rem;
-        border-radius: var(--radius-lg);
+    body #page-sa .web-form-container {
+        padding: 2rem 1.5rem !important;
+        border-radius: var(--radius-lg) !important;
     }
 
-    #page-sa .web-form-title h1 {
-        font-size: 2rem;
+    body #page-sa .web-form-title h1 {
+        font-size: 2rem !important;
     }
 
-    #page-sa .box-group {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    body #page-sa .box-group {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
     }
 
-    #page-sa .web-form-actions {
-        flex-direction: column;
-        align-items: stretch;
+    body #page-sa .web-form-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
     }
 
-    #page-sa .web-form-actions .right-area {
-        margin-left: 0;
+    body #page-sa .web-form-actions .right-area {
+        margin-left: 0 !important;
     }
 
-    #page-sa .btn {
-        width: 100%;
-        justify-content: center;
+    body #page-sa .btn {
+        width: 100% !important;
+        justify-content: center !important;
     }
 }
 
 @media (max-width: 480px) {
-    #page-sa .web-form-container {
-        padding: 1.5rem 1rem;
+    body #page-sa .web-form-container {
+        padding: 1.5rem 1rem !important;
     }
 
-    #page-sa .web-form-title h1 {
-        font-size: 1.75rem;
+    body #page-sa .web-form-title h1 {
+        font-size: 1.75rem !important;
     }
 
-    #page-sa .success-title {
-        font-size: 1.5rem;
+    body #page-sa .success-title {
+        font-size: 1.5rem !important;
     }
 }
 
@@ -525,18 +562,18 @@
    Print Styles
    ========================================== */
 @media print {
-    #page-sa {
-        background: white;
-        padding: 0;
+    body #page-sa {
+        background: white !important;
+        padding: 0 !important;
     }
 
-    #page-sa .web-form-container {
-        box-shadow: none;
-        border: 1px solid var(--border);
+    body #page-sa .web-form-container {
+        box-shadow: none !important;
+        border: 1px solid var(--border) !important;
     }
 
-    #page-sa .web-form-actions,
-    #page-sa .web-form-footer {
-        display: none;
+    body #page-sa .web-form-actions,
+    body #page-sa .web-form-footer {
+        display: none !important;
     }
 }
