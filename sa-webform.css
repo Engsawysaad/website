@@ -1,0 +1,542 @@
+/* ==========================================
+   SA Web Form - Flow Soft Theme Styles
+   ==========================================
+   This file styles the Web Form at /sa to match
+   the Flow Soft website design system.
+   ========================================== */
+
+/* Import Google Fonts (if not already loaded) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ==========================================
+   CSS Variables - Matching Flow Soft Design
+   ========================================== */
+:root {
+    --primary: #0f172a;
+    --primary-light: #1e293b;
+    --accent: #0891b2;
+    --accent-light: #0e7490;
+    --accent-bg: #f0f9ff;
+    --success: #10b981;
+    --success-light: #d1fae5;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --text: #334155;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+    --surface: #ffffff;
+    --surface-alt: #f8fafc;
+    --surface-hover: #f1f5f9;
+    --border: #e2e8f0;
+    --border-light: #f1f5f9;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ==========================================
+   Page Wrapper & Container
+   ========================================== */
+#page-sa {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+#page-sa .page-content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Web Form Container
+   ========================================== */
+#page-sa .web-form-container {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: 3rem;
+    margin-top: 2rem;
+}
+
+/* ==========================================
+   Web Form Header
+   ========================================== */
+#page-sa .web-form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+#page-sa .web-form-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#page-sa .web-form-title h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+#page-sa .web-form-title .ellipsis {
+    display: block;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+}
+
+#page-sa .indicator-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--warning);
+    color: white;
+}
+
+#page-sa .indicator-pill.orange {
+    background: var(--warning);
+}
+
+#page-sa .indicator-pill.green {
+    background: var(--success);
+}
+
+/* ==========================================
+   Banner Image
+   ========================================== */
+#page-sa .web-form-banner-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto 2rem;
+    display: block;
+}
+
+/* ==========================================
+   Web Form Body & Fields
+   ========================================== */
+#page-sa .web-form-body {
+    margin: 2rem 0;
+}
+
+#page-sa .web-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Form Fields */
+#page-sa .form-control {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    background: var(--surface);
+    color: var(--text);
+    width: 100%;
+}
+
+#page-sa .form-control:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+#page-sa .form-control:hover {
+    border-color: var(--accent-light);
+}
+
+#page-sa label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+#page-sa .form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Required Field Indicator */
+#page-sa .reqd {
+    color: var(--danger);
+    margin-left: 0.25rem;
+}
+
+/* ==========================================
+   Box Group & Column Layout
+   ========================================== */
+#page-sa .box-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#page-sa .box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#page-sa .box-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#page-sa .box-area {
+    /* Field area */
+}
+
+/* ==========================================
+   Section & Column Breaks
+   ========================================== */
+#page-sa .section-break,
+#page-sa .column-break {
+    /* Handled by box-group layout */
+}
+
+/* ==========================================
+   Checkbox Styling
+   ========================================== */
+#page-sa input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+#page-sa .checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-family: var(--font-body);
+}
+
+/* ==========================================
+   Date & Autocomplete Fields
+   ========================================== */
+#page-sa input[type="date"] {
+    font-family: var(--font-body);
+}
+
+#page-sa .awesomplete {
+    width: 100%;
+}
+
+#page-sa .awesomplete input {
+    width: 100%;
+}
+
+#page-sa .awesomplete ul {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#page-sa .awesomplete li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#page-sa .awesomplete li:hover {
+    background: var(--surface-hover);
+}
+
+/* ==========================================
+   Web Form Footer & Buttons
+   ========================================== */
+#page-sa .web-form-footer {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-light);
+}
+
+#page-sa .web-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#page-sa .left-area,
+#page-sa .center-area,
+#page-sa .right-area {
+    display: flex;
+    gap: 0.75rem;
+}
+
+#page-sa .right-area {
+    margin-left: auto;
+}
+
+/* Buttons */
+#page-sa .btn {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+#page-sa .btn-primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+#page-sa .btn-primary:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+#page-sa .btn-default {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+#page-sa .btn-default:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent);
+}
+
+#page-sa .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+#page-sa .btn-md {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+#page-sa .discard-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border-color: var(--border);
+}
+
+#page-sa .discard-btn:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+    background: #fef2f2;
+}
+
+#page-sa .submit-btn {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+#page-sa .submit-btn:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+}
+
+/* ==========================================
+   Success Page
+   ========================================== */
+#page-sa .success-page {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+#page-sa .success-header {
+    margin-bottom: 2rem;
+}
+
+#page-sa .success-icon {
+    width: 80px;
+    height: 80px;
+    color: var(--success);
+    margin-bottom: 1rem;
+}
+
+#page-sa .success-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+#page-sa .success-body {
+    margin: 2rem 0;
+}
+
+#page-sa .success-message {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+#page-sa .success-footer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-light);
+}
+
+#page-sa .new-btn {
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--border);
+}
+
+#page-sa .new-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent);
+}
+
+/* ==========================================
+   Paging Dots
+   ========================================== */
+#page-sa .paging {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+#page-sa .paging .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#page-sa .paging .dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+/* ==========================================
+   Web Form Skeleton (Loading State)
+   ========================================== */
+#page-sa .web-form-skeleton .box {
+    background: var(--surface-alt);
+    border-radius: var(--radius-md);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+@media (max-width: 768px) {
+    #page-sa {
+        padding: 1rem 0.5rem;
+    }
+
+    #page-sa .web-form-container {
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    #page-sa .web-form-title h1 {
+        font-size: 2rem;
+    }
+
+    #page-sa .box-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #page-sa .web-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #page-sa .web-form-actions .right-area {
+        margin-left: 0;
+    }
+
+    #page-sa .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #page-sa .web-form-container {
+        padding: 1.5rem 1rem;
+    }
+
+    #page-sa .web-form-title h1 {
+        font-size: 1.75rem;
+    }
+
+    #page-sa .success-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+@media print {
+    #page-sa {
+        background: white;
+        padding: 0;
+    }
+
+    #page-sa .web-form-container {
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    #page-sa .web-form-actions,
+    #page-sa .web-form-footer {
+        display: none;
+    }
+}

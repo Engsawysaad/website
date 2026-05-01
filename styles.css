@@ -1589,3 +1589,143 @@ body {
         font-size: 1.25rem;
     }
 }
+
+/* Thank You Page */
+.thank-you {
+    padding: 8rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thank-you-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.thank-you-icon {
+    margin-bottom: 2rem;
+}
+
+.thank-you-icon svg {
+    width: 80px;
+    height: 80px;
+}
+
+.thank-you-message {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.thank-you-message .section-badge {
+    margin-bottom: 1.5rem;
+}
+
+.thank-you-message .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.thank-you-message .section-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.subscription-details,
+.transaction-info {
+    background: var(--surface-alt);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.details-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.status-active {
+    color: var(--success);
+}
+
+.thank-you-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.thank-you-note {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.thank-you-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.thank-you-note a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .thank-you {
+        padding: 6rem 1.5rem 3rem;
+    }
+    
+    .thank-you-message {
+        padding: 2rem 1.5rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .thank-you-actions {
+        flex-direction: column;
+    }
+    
+    .thank-you-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
