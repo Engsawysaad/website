@@ -302,6 +302,101 @@ body #page-sa .awesomplete li:hover {
 }
 
 /* ==========================================
+   Date Picker Styling
+   ========================================== */
+body #page-sa .datepicker,
+body #page-sa .date-picker,
+body #page-sa .frappe-date-picker {
+    font-family: var(--font-body) !important;
+    background: var(--surface) !important;
+    border: 2px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    padding: 1rem !important;
+}
+
+/* Calendar Header */
+body #page-sa .datepicker .datepicker-days table thead th,
+body #page-sa .datepicker-header {
+    font-family: var(--font-heading) !important;
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Calendar Days */
+body #page-sa .datepicker .day,
+body #page-sa .datepicker-days td {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    font-family: var(--font-body) !important;
+    transition: all 0.2s ease !important;
+}
+
+body #page-sa .datepicker .day:hover,
+body #page-sa .datepicker-days td:hover {
+    background: var(--accent-bg) !important;
+    color: var(--accent) !important;
+}
+
+body #page-sa .datepicker .day.active,
+body #page-sa .datepicker-days td.active {
+    background: var(--accent) !important;
+    color: white !important;
+}
+
+/* Today */
+body #page-sa .datepicker .day.today,
+body #page-sa .datepicker-days td.today {
+    border: 2px solid var(--accent) !important;
+}
+
+/* ==========================================
+   Autocomplete Dropdown (Enhanced)
+   ========================================== */
+body #page-sa .awesomplete .dropdown-menu,
+body #page-sa .ui-autocomplete {
+    background: var(--surface) !important;
+    border: 2px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    padding: 0.5rem 0 !important;
+}
+
+body #page-sa .awesomplete .dropdown-item,
+body #page-sa .ui-autocomplete li {
+    padding: 0.75rem 1rem !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    font-family: var(--font-body) !important;
+}
+
+body #page-sa .awesomplete .dropdown-item:hover,
+body #page-sa .ui-autocomplete li:hover {
+    background: var(--surface-hover) !important;
+    color: var(--accent) !important;
+}
+
+/* ==========================================
+   Hide "Amended From" Field
+   ========================================== */
+body #page-sa .form-group:has(input[name="amended_from"]),
+body #page-sa .frappe-control[data-fieldname="amended_from"] {
+    display: none !important;
+}
+
+/* ==========================================
+   Fix Form Layout
+   ========================================== */
+body #page-sa .frappe-control {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+}
+
+/* ==========================================
    Web Form Footer & Buttons
    ========================================== */
 body #page-sa .web-form-footer {
